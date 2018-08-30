@@ -1,6 +1,6 @@
 # LeapMotion Gesture Project
 
-# Get Started
+### Get Started
 
 ```sh
   $ git clone https://github.com/joaquingx/LeapMotion/

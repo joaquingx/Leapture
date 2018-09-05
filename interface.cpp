@@ -87,6 +87,8 @@ void VisualInterface::player() {
 
     selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(list));
     g_signal_connect(selection, "changed", G_CALLBACK(on_changed), label);
+    
+    g_signal_connect(window, "key-release-event", G_CALLBACK(key_event), NULL);
 
     g_signal_connect(G_OBJECT (window), "destroy",
                      G_CALLBACK(gtk_main_quit), NULL);
@@ -129,3 +131,7 @@ void VisualInterface::startDisplay() {
     gtk_main();
 }
 
+bool VisualInterface::key_event(GtkWidget *widget, GdkEventKey *event){
+    g_printerr("%s\n",gdk_keyval_name(event->keyval));
+    return FALSE;
+}

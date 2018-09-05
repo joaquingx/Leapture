@@ -2,6 +2,7 @@
 // Created by joaquin on 30/08/18.
 //
 #include "gestures.h"
+#include "state.h"
 using namespace std;
 
 void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) {
@@ -42,9 +43,12 @@ void OwnGestures::checkFist(Leap::Frame frame) {
             cout << "********************************************\n";
             cout << "********************************************\n";
             cout << "Fist Detected-------------------------------\n";
-            if(!flag) {
-                system("google-chrome-stable");
-                flag = true;
+//            if(!flag) {
+            if(currentState == Begin){ //shitty code
+                system("xdotool key super+w");
+            }
+            if(currentState == Free){ // as above
+
             }
         }
     }
@@ -79,9 +83,6 @@ void OwnGestures::checkLiftUp(Leap::Frame frame) {
         system("emacs");
     }
 }
-
-
-
 
 
 
@@ -150,13 +151,27 @@ void OwnGestures::checkPredefinedGestures(Leap::Frame frame, Leap::Controller co
         }
     }
 }
-
+int cnt = 0 , cMode = 0;
+string toDo;
 void OwnGestures::checkKeyTap(Leap::Gesture gesture) {
     Leap::KeyTapGesture tap = gesture;
     std::cout << std::string(2, ' ')
               << "Key Tap id: " << gesture.id()
               << ", position: " << tap.position()
               << ", direction: " << tap.direction()<< std::endl;
-    system("oneko &");
 
+    int mult = 4;
+    if(currentState == Principal){ //shitty code
+        if(!(cnt%mult))
+        {
+            cout << cnt << "\n";
+            if(!(cMode % 2))
+                toDo = "xdotool key Down", cMode++;
+            else
+                toDo = "xdotool key Up", cMode++;
+        }
+//        cout << "Estoy aca! con este todo: " + toDo + "\n";
+        system(toDo.c_str());
+        ++cnt;
+    }
 }

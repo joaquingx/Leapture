@@ -16,7 +16,7 @@ LINK_DIRECTORIES(${GTK3_LIBRARY_DIRS})
 ADD_DEFINITIONS(${GTK3_CFLAGS_OTHER})
 
 # Add an executable compiled from hello.c
-ADD_EXECUTABLE(window main2.c)
+ADD_EXECUTABLE(window main3.c)
 
 # Link the target to the GTK+ libraries
 TARGET_LINK_LIBRARIES(window ${GTK3_LIBRARIES})

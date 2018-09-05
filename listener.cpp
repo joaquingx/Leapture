@@ -4,6 +4,7 @@
 
 #include "listener.h"
 #include "gestures.h"
+//#include "state.h"
 
 const std::string fingerNames[] = {"Thumb", "Index", "Middle", "Ring", "Pinky"};
 const std::string boneNames[] = {"Metacarpal", "Proximal", "Middle", "Distal"};
@@ -64,7 +65,7 @@ void BaseListener::onServiceDisconnect(const Leap::Controller& controller) {
 
 
 void BaseListener::onFrame(const Leap::Controller& controller) {
-    OwnGestures Og ;
+    OwnGestures Og;
     const Leap::Frame frame = controller.frame();
     Og.checkGestures(frame, controller);
 }

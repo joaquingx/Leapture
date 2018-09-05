@@ -4,28 +4,31 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/ltch23/2018-II/IHC/interface-gtk/main2.c" "/home/ltch23/2018-II/IHC/interface-gtk/CMakeFiles/window.dir/main2.c.o"
+  "/home/joaquin/Repos/LeapMotion/interface-gtk/main3.c" "/home/joaquin/Repos/LeapMotion/interface-gtk/CMakeFiles/window.dir/main3.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/usr/local/include/gtk-3.0"
+  "/usr/include/gtk-3.0"
+  "/usr/include/pango-1.0"
+  "/usr/include/glib-2.0"
+  "/usr/lib/glib-2.0/include"
+  "/usr/include/fribidi"
+  "/usr/include/cairo"
+  "/usr/include/pixman-1"
+  "/usr/include/freetype2"
+  "/usr/include/libpng16"
+  "/usr/include/harfbuzz"
+  "/usr/include/uuid"
+  "/usr/include/gdk-pixbuf-2.0"
+  "/usr/include/gio-unix-2.0"
+  "/usr/include/libdrm"
+  "/usr/include/atk-1.0"
   "/usr/include/at-spi2-atk/2.0"
   "/usr/include/at-spi-2.0"
   "/usr/include/dbus-1.0"
-  "/usr/lib/x86_64-linux-gnu/dbus-1.0/include"
-  "/usr/include/gio-unix-2.0"
-  "/usr/include/cairo"
-  "/usr/include/pango-1.0"
-  "/usr/include/harfbuzz"
-  "/usr/include/atk-1.0"
-  "/usr/include/pixman-1"
-  "/usr/include/freetype2"
-  "/usr/include/libpng12"
-  "/usr/include/gdk-pixbuf-2.0"
-  "/usr/include/glib-2.0"
-  "/usr/lib/x86_64-linux-gnu/glib-2.0/include"
+  "/usr/lib/dbus-1.0/include"
   )
 
 # Targets to which this target links.

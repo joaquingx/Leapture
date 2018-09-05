@@ -1,6 +1,3 @@
-
-
-
 #include <gtk/gtk.h>
 
 enum {

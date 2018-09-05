@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/window.dir/main2.c.o"
+  "CMakeFiles/window.dir/main3.c.o"
   "window.pdb"
   "window"
 )

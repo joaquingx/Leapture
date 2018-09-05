@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ltch23/2018-II/IHC/interface-gtk/main2.c
+/home/joaquin/Repos/LeapMotion/interface-gtk/main3.c
 gtk/gtk.h
 -
 
@@ -287,9 +287,13 @@ glib-object.h
 -
 gio/gio.h
 -
+gdk-pixbuf/gdk-pixbuf-macros.h
+-
 
 /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-enum-types.h
 glib-object.h
+-
+gdk-pixbuf/gdk-pixbuf-macros.h
 -
 
 /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-features.h
@@ -320,6 +324,12 @@ gdk-pixbuf/gdk-pixbuf-animation.h
 gdk-pixbuf/gdk-pixbuf-io.h
 -
 
+/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-macros.h
+glib.h
+-
+gdk-pixbuf/gdk-pixbuf-features.h
+-
+
 /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-simple-anim.h
 gdk-pixbuf/gdk-pixbuf-animation.h
 -
@@ -332,6 +342,8 @@ gdk-pixbuf/gdk-pixbuf-core.h
 
 /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf.h
 glib.h
+-
+gdk-pixbuf/gdk-pixbuf-macros.h
 -
 gdk-pixbuf/gdk-pixbuf-features.h
 -
@@ -1425,6 +1437,8 @@ glib/gurifuncs.h
 -
 glib/gutils.h
 -
+glib/guuid.h
+-
 glib/gvarianttype.h
 -
 glib/gvariant.h
@@ -1503,6 +1517,8 @@ glib/gtypes.h
 /usr/include/glib-2.0/glib/gbacktrace.h
 glib/gtypes.h
 -
+sys/select.h
+-
 signal.h
 -
 
@@ -1573,6 +1589,8 @@ glib/gquark.h
 -
 
 /usr/include/glib-2.0/glib/gfileutils.h
+glibconfig.h
+-
 glib/gerror.h
 -
 
@@ -1609,6 +1627,8 @@ glib/gstring.h
 -
 
 /usr/include/glib-2.0/glib/gkeyfile.h
+glib/gbytes.h
+-
 glib/gerror.h
 -
 
@@ -1656,6 +1676,8 @@ stdarg.h
 glib/gtypes.h
 -
 glib/gmacros.h
+-
+glib/gvariant.h
 -
 
 /usr/include/glib-2.0/glib/gnode.h
@@ -1739,6 +1761,8 @@ glib/gmacros.h
 -
 glib/gtypes.h
 -
+glib/gerror.h
+-
 
 /usr/include/glib-2.0/glib/gstring.h
 glib/gtypes.h
@@ -1762,6 +1786,8 @@ glib/gstring.h
 glib/gerror.h
 -
 glib/gslist.h
+-
+string.h
 -
 
 /usr/include/glib-2.0/glib/gthread.h
@@ -1817,6 +1843,12 @@ glib/gtypes.h
 -
 stdarg.h
 -
+stdlib.h
+-
+
+/usr/include/glib-2.0/glib/guuid.h
+glib/gtypes.h
+-
 
 /usr/include/glib-2.0/glib/gvariant.h
 glib/gvarianttype.h
@@ -1827,8 +1859,6 @@ glib/gbytes.h
 -
 
 /usr/include/glib-2.0/glib/gvarianttype.h
-glib/gmessages.h
--
 glib/gtypes.h
 -
 
@@ -1944,227 +1974,7 @@ gobject/gvalue.h
 gobject/gvalue.h
 -
 
-/usr/include/pango-1.0/pango/pango-attributes.h
-pango/pango-font.h
--
-glib-object.h
--
-
-/usr/include/pango-1.0/pango/pango-bidi-type.h
-glib.h
--
-
-/usr/include/pango-1.0/pango/pango-break.h
-glib.h
--
-pango/pango-item.h
--
-
-/usr/include/pango-1.0/pango/pango-context.h
-pango/pango-font.h
--
-pango/pango-fontmap.h
--
-pango/pango-attributes.h
--
-
-/usr/include/pango-1.0/pango/pango-coverage.h
-glib.h
--
-
-/usr/include/pango-1.0/pango/pango-engine.h
-pango/pango-types.h
--
-pango/pango-item.h
--
-pango/pango-font.h
--
-pango/pango-glyph.h
--
-pango/pango-script.h
--
-
-/usr/include/pango-1.0/pango/pango-enum-types.h
-glib-object.h
--
-
-/usr/include/pango-1.0/pango/pango-features.h
-
-/usr/include/pango-1.0/pango/pango-font.h
-pango/pango-coverage.h
--
-pango/pango-types.h
--
-glib-object.h
--
-
-/usr/include/pango-1.0/pango/pango-fontmap.h
-pango/pango-font.h
--
-pango/pango-fontset.h
--
-
-/usr/include/pango-1.0/pango/pango-fontset.h
-pango/pango-coverage.h
--
-pango/pango-types.h
--
-glib-object.h
--
-
-/usr/include/pango-1.0/pango/pango-glyph-item.h
-pango/pango-attributes.h
--
-pango/pango-break.h
--
-pango/pango-item.h
--
-pango/pango-glyph.h
--
-
-/usr/include/pango-1.0/pango/pango-glyph.h
-pango/pango-types.h
--
-pango/pango-item.h
--
-
-/usr/include/pango-1.0/pango/pango-gravity.h
-glib.h
--
-pango/pango-matrix.h
--
-pango/pango-script.h
--
-
-/usr/include/pango-1.0/pango/pango-item.h
-pango/pango-types.h
--
-
-/usr/include/pango-1.0/pango/pango-language.h
-glib.h
--
-glib-object.h
--
-pango/pango-script.h
--
-
-/usr/include/pango-1.0/pango/pango-layout.h
-pango/pango-attributes.h
--
-pango/pango-context.h
--
-pango/pango-glyph-item.h
--
-pango/pango-tabs.h
--
-
-/usr/include/pango-1.0/pango/pango-matrix.h
-glib.h
--
-glib-object.h
--
-pango/pango-types.h
--
-
-/usr/include/pango-1.0/pango/pango-renderer.h
-pango/pango-layout.h
--
-
-/usr/include/pango-1.0/pango/pango-script.h
-glib.h
--
-pango/pango-language.h
--
-
-/usr/include/pango-1.0/pango/pango-tabs.h
-pango/pango-types.h
--
-
-/usr/include/pango-1.0/pango/pango-types.h
-glib.h
--
-glib-object.h
--
-pango/pango-gravity.h
--
-pango/pango-language.h
--
-pango/pango-matrix.h
--
-pango/pango-script.h
--
-pango/pango-bidi-type.h
--
-
-/usr/include/pango-1.0/pango/pango-utils.h
-stdio.h
--
-glib.h
--
-pango/pango-font.h
--
-
-/usr/include/pango-1.0/pango/pango.h
-pango/pango-attributes.h
--
-pango/pango-bidi-type.h
--
-pango/pango-break.h
--
-pango/pango-context.h
--
-pango/pango-coverage.h
--
-pango/pango-engine.h
--
-pango/pango-enum-types.h
--
-pango/pango-features.h
--
-pango/pango-font.h
--
-pango/pango-fontmap.h
--
-pango/pango-fontset.h
--
-pango/pango-glyph.h
--
-pango/pango-glyph-item.h
--
-pango/pango-gravity.h
--
-pango/pango-item.h
--
-pango/pango-layout.h
--
-pango/pango-matrix.h
--
-pango/pango-renderer.h
--
-pango/pango-script.h
--
-pango/pango-tabs.h
--
-pango/pango-types.h
--
-pango/pango-utils.h
--
-
-/usr/include/pango-1.0/pango/pangocairo.h
-pango/pango.h
--
-cairo.h
--
-
-/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h
-glib/gmacros.h
--
-limits.h
--
-float.h
--
-
-/usr/local/include/gtk-3.0/gdk/deprecated/gdkcolor.h
+/usr/include/gtk-3.0/gdk/deprecated/gdkcolor.h
 cairo.h
 -
 gdk/gdktypes.h
@@ -2172,9 +1982,9 @@ gdk/gdktypes.h
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdk-autocleanup.h
+/usr/include/gtk-3.0/gdk/gdk-autocleanup.h
 
-/usr/local/include/gtk-3.0/gdk/gdk.h
+/usr/include/gtk-3.0/gdk/gdk.h
 gdk/gdkconfig.h
 -
 gdk/gdkversionmacros.h
@@ -2187,6 +1997,10 @@ gdk/gdkcursor.h
 -
 gdk/gdkdevice.h
 -
+gdk/gdkdevicepad.h
+-
+gdk/gdkdevicetool.h
+-
 gdk/gdkdevicemanager.h
 -
 gdk/gdkdisplay.h
@@ -2194,6 +2008,8 @@ gdk/gdkdisplay.h
 gdk/gdkdisplaymanager.h
 -
 gdk/gdkdnd.h
+-
+gdk/gdkdrawingcontext.h
 -
 gdk/gdkenumtypes.h
 -
@@ -2210,6 +2026,8 @@ gdk/gdkkeys.h
 gdk/gdkkeysyms.h
 -
 gdk/gdkmain.h
+-
+gdk/gdkmonitor.h
 -
 gdk/gdkpango.h
 -
@@ -2242,7 +2060,7 @@ gdk/deprecated/gdkcolor.h
 gdk/gdk-autocleanup.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkapplaunchcontext.h
+/usr/include/gtk-3.0/gdk/gdkapplaunchcontext.h
 gio/gio.h
 -
 gdk/gdkversionmacros.h
@@ -2252,23 +2070,25 @@ gdk/gdktypes.h
 gdk/gdkscreen.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkcairo.h
+/usr/include/gtk-3.0/gdk/gdkcairo.h
 gdk/gdkversionmacros.h
 -
 gdk/deprecated/gdkcolor.h
 -
 gdk/gdkrgba.h
 -
+gdk/gdkdrawingcontext.h
+-
 gdk/gdkpixbuf.h
 -
 pango/pangocairo.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkconfig.h
+/usr/include/gtk-3.0/gdk/gdkconfig.h
 glib.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkcursor.h
+/usr/include/gtk-3.0/gdk/gdkcursor.h
 gdk/gdkversionmacros.h
 -
 gdk/gdktypes.h
@@ -2276,19 +2096,31 @@ gdk/gdktypes.h
 gdk-pixbuf/gdk-pixbuf.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkdevice.h
+/usr/include/gtk-3.0/gdk/gdkdevice.h
 gdk/gdkversionmacros.h
 -
 gdk/gdktypes.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkdevicemanager.h
+/usr/include/gtk-3.0/gdk/gdkdevicemanager.h
 gdk/gdktypes.h
 -
 gdk/gdkdevice.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkdisplay.h
+/usr/include/gtk-3.0/gdk/gdkdevicepad.h
+gdk/gdkversionmacros.h
+-
+gdk/gdktypes.h
+-
+
+/usr/include/gtk-3.0/gdk/gdkdevicetool.h
+gdk/gdkversionmacros.h
+-
+gdk/gdktypes.h
+-
+
+/usr/include/gtk-3.0/gdk/gdkdisplay.h
 gdk/gdkversionmacros.h
 -
 gdk/gdktypes.h
@@ -2299,14 +2131,16 @@ gdk/gdkdevicemanager.h
 -
 gdk/gdkseat.h
 -
+gdk/gdkmonitor.h
+-
 
-/usr/local/include/gtk-3.0/gdk/gdkdisplaymanager.h
+/usr/include/gtk-3.0/gdk/gdkdisplaymanager.h
 gdk/gdktypes.h
 -
 gdk/gdkdisplay.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkdnd.h
+/usr/include/gtk-3.0/gdk/gdkdnd.h
 gdk/gdktypes.h
 -
 gdk/gdkdevice.h
@@ -2314,13 +2148,19 @@ gdk/gdkdevice.h
 gdk/gdkevents.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkenumtypes.h
+/usr/include/gtk-3.0/gdk/gdkdrawingcontext.h
+gdk/gdkversionmacros.h
+-
+gdk/gdktypes.h
+-
+
+/usr/include/gtk-3.0/gdk/gdkenumtypes.h
 glib-object.h
 -
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkevents.h
+/usr/include/gtk-3.0/gdk/gdkevents.h
 gdk/gdkversionmacros.h
 -
 gdk/gdktypes.h
@@ -2329,44 +2169,54 @@ gdk/gdkdnd.h
 -
 gdk/gdkdevice.h
 -
+gdk/gdkdevicetool.h
+-
 
-/usr/local/include/gtk-3.0/gdk/gdkframeclock.h
+/usr/include/gtk-3.0/gdk/gdkframeclock.h
 gdk/gdkframetimings.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkframetimings.h
+/usr/include/gtk-3.0/gdk/gdkframetimings.h
 glib-object.h
 -
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkglcontext.h
+/usr/include/gtk-3.0/gdk/gdkglcontext.h
 gdk/gdkversionmacros.h
 -
 gdk/gdktypes.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkkeys.h
+/usr/include/gtk-3.0/gdk/gdkkeys.h
 gdk/gdkversionmacros.h
 -
 gdk/gdktypes.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkkeysyms.h
+/usr/include/gtk-3.0/gdk/gdkkeysyms.h
 
-/usr/local/include/gtk-3.0/gdk/gdkmain.h
+/usr/include/gtk-3.0/gdk/gdkmain.h
 gdk/gdkversionmacros.h
 -
 gdk/gdktypes.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkpango.h
+/usr/include/gtk-3.0/gdk/gdkmonitor.h
+gdk/gdkversionmacros.h
+-
+gdk/gdkrectangle.h
+-
+gdk/gdktypes.h
+-
+
+/usr/include/gtk-3.0/gdk/gdkpango.h
 gdk/gdktypes.h
 -
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkpixbuf.h
+/usr/include/gtk-3.0/gdk/gdkpixbuf.h
 cairo.h
 -
 gdk-pixbuf/gdk-pixbuf.h
@@ -2376,25 +2226,25 @@ gdk/gdktypes.h
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkproperty.h
+/usr/include/gtk-3.0/gdk/gdkproperty.h
 gdk/gdktypes.h
 -
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkrectangle.h
+/usr/include/gtk-3.0/gdk/gdkrectangle.h
 gdk/gdktypes.h
 -
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkrgba.h
+/usr/include/gtk-3.0/gdk/gdkrgba.h
 gdk/gdktypes.h
 -
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkscreen.h
+/usr/include/gtk-3.0/gdk/gdkscreen.h
 cairo.h
 -
 gdk/gdkversionmacros.h
@@ -2404,7 +2254,7 @@ gdk/gdktypes.h
 gdk/gdkdisplay.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkseat.h
+/usr/include/gtk-3.0/gdk/gdkseat.h
 glib-object.h
 -
 gdk/gdkwindow.h
@@ -2414,23 +2264,23 @@ gdk/gdkevents.h
 gdk/gdktypes.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkselection.h
+/usr/include/gtk-3.0/gdk/gdkselection.h
 gdk/gdktypes.h
 -
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdktestutils.h
+/usr/include/gtk-3.0/gdk/gdktestutils.h
 gdk/gdkwindow.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkthreads.h
+/usr/include/gtk-3.0/gdk/gdkthreads.h
 gdk/gdktypes.h
 -
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdktypes.h
+/usr/include/gtk-3.0/gdk/gdktypes.h
 glib.h
 -
 pango/pango.h
@@ -2442,67 +2292,69 @@ cairo.h
 gdk/gdkconfig.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkversionmacros.h
+/usr/include/gtk-3.0/gdk/gdkversionmacros.h
 glib.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkvisual.h
+/usr/include/gtk-3.0/gdk/gdkvisual.h
 gdk/gdktypes.h
 -
 gdk/gdkversionmacros.h
 -
 
-/usr/local/include/gtk-3.0/gdk/gdkwindow.h
+/usr/include/gtk-3.0/gdk/gdkwindow.h
 gdk/gdkversionmacros.h
 -
 gdk/gdktypes.h
+-
+gdk/gdkdrawingcontext.h
 -
 gdk/gdkevents.h
 -
 gdk/gdkframeclock.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkaction.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkaction.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkactiongroup.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkactiongroup.h
 gtk/deprecated/gtkaction.h
 -
 gtk/deprecated/gtkstock.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkactivatable.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkactivatable.h
 gtk/deprecated/gtkaction.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkalignment.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkalignment.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkarrow.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkarrow.h
 gtk/deprecated/gtkmisc.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkcolorsel.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkcolorsel.h
 gtk/gtkdialog.h
 -
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkcolorseldialog.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkcolorseldialog.h
 gtk/gtkdialog.h
 -
 gtk/deprecated/gtkcolorsel.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkfontsel.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkfontsel.h
 gtk/gtkdialog.h
 -
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkgradient.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkgradient.h
 gdk/gdk.h
 -
 gtk/gtkstylecontext.h
@@ -2512,39 +2364,39 @@ gtk/deprecated/gtkstyleproperties.h
 gtk/deprecated/gtksymboliccolor.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkhandlebox.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkhandlebox.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkhbbox.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkhbbox.h
 gtk/gtkbbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkhbox.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkhbox.h
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkhpaned.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkhpaned.h
 gtk/gtkpaned.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkhscale.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkhscale.h
 gtk/gtkscale.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkhscrollbar.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkhscrollbar.h
 gtk/gtkscrollbar.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkhseparator.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkhseparator.h
 gtk/gtkseparator.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkhsv.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkhsv.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkiconfactory.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkiconfactory.h
 gdk/gdk.h
 -
 gtk/gtkenums.h
@@ -2552,47 +2404,47 @@ gtk/gtkenums.h
 gtk/gtktypes.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkimagemenuitem.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkimagemenuitem.h
 gtk/gtkmenuitem.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkmisc.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkmisc.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtknumerableicon.h
+/usr/include/gtk-3.0/gtk/deprecated/gtknumerableicon.h
 gio/gio.h
 -
 gtk/gtkstylecontext.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkradioaction.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkradioaction.h
 gtk/deprecated/gtktoggleaction.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkrc.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkrc.h
 gtk/gtkwidget.h
 -
 gtk/gtkbindings.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkrecentaction.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkrecentaction.h
 gtk/deprecated/gtkaction.h
 -
 gtk/gtkrecentmanager.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkstatusicon.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkstatusicon.h
 gtk/gtkimage.h
 -
 gtk/gtkmenu.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkstock.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkstock.h
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkstyle.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkstyle.h
 gdk/gdk.h
 -
 gtk/gtkenums.h
@@ -2600,7 +2452,7 @@ gtk/gtkenums.h
 gtk/gtktypes.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkstyleproperties.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkstyleproperties.h
 glib-object.h
 -
 gdk/gdk.h
@@ -2608,21 +2460,21 @@ gdk/gdk.h
 gtk/gtkenums.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtksymboliccolor.h
+/usr/include/gtk-3.0/gtk/deprecated/gtksymboliccolor.h
 gdk/gdk.h
 -
 gtk/deprecated/gtkstyleproperties.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtktable.h
+/usr/include/gtk-3.0/gtk/deprecated/gtktable.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtktearoffmenuitem.h
+/usr/include/gtk-3.0/gtk/deprecated/gtktearoffmenuitem.h
 gtk/gtkmenuitem.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkthemingengine.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkthemingengine.h
 glib-object.h
 -
 cairo.h
@@ -2636,11 +2488,11 @@ gtk/deprecated/gtkstyleproperties.h
 gtk/gtktypes.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtktoggleaction.h
+/usr/include/gtk-3.0/gtk/deprecated/gtktoggleaction.h
 gtk/deprecated/gtkaction.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkuimanager.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkuimanager.h
 gtk/gtkaccelgroup.h
 -
 gtk/gtkwidget.h
@@ -2650,33 +2502,33 @@ gtk/deprecated/gtkaction.h
 gtk/deprecated/gtkactiongroup.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkvbbox.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkvbbox.h
 gtk/gtkbbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkvbox.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkvbox.h
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkvpaned.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkvpaned.h
 gtk/gtkpaned.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkvscale.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkvscale.h
 gtk/gtkscale.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkvscrollbar.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkvscrollbar.h
 gtk/gtkscrollbar.h
 -
 
-/usr/local/include/gtk-3.0/gtk/deprecated/gtkvseparator.h
+/usr/include/gtk-3.0/gtk/deprecated/gtkvseparator.h
 gtk/gtkseparator.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtk-autocleanups.h
+/usr/include/gtk-3.0/gtk/gtk-autocleanups.h
 
-/usr/local/include/gtk-3.0/gtk/gtk.h
+/usr/include/gtk-3.0/gtk/gtk.h
 gdk/gdk.h
 -
 gtk/gtkaboutdialog.h
@@ -2790,6 +2642,8 @@ gtk/gtkdebug.h
 gtk/gtkdialog.h
 -
 gtk/gtkdnd.h
+-
+gtk/gtkdragdest.h
 -
 gtk/gtkdragsource.h
 -
@@ -2925,6 +2779,8 @@ gtk/gtkorientable.h
 -
 gtk/gtkoverlay.h
 -
+gtk/gtkpadcontroller.h
+-
 gtk/gtkpagesetup.h
 -
 gtk/gtkpapersize.h
@@ -2994,6 +2850,8 @@ gtk/gtkseparatormenuitem.h
 gtk/gtkseparatortoolitem.h
 -
 gtk/gtksettings.h
+-
+gtk/gtkshortcutlabel.h
 -
 gtk/gtkshortcutsgroup.h
 -
@@ -3184,47 +3042,47 @@ gtk/deprecated/gtkvseparator.h
 gtk/gtk-autocleanups.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkaboutdialog.h
+/usr/include/gtk-3.0/gtk/gtkaboutdialog.h
 gtk/gtkdialog.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkaccelgroup.h
+/usr/include/gtk-3.0/gtk/gtkaccelgroup.h
 gdk/gdk.h
 -
 gtk/gtkenums.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkaccellabel.h
+/usr/include/gtk-3.0/gtk/gtkaccellabel.h
 gtk/gtklabel.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkaccelmap.h
+/usr/include/gtk-3.0/gtk/gtkaccelmap.h
 gtk/gtkaccelgroup.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkaccessible.h
+/usr/include/gtk-3.0/gtk/gtkaccessible.h
 atk/atk.h
 -
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkactionable.h
+/usr/include/gtk-3.0/gtk/gtkactionable.h
 glib-object.h
 -
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkactionbar.h
+/usr/include/gtk-3.0/gtk/gtkactionbar.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkadjustment.h
+/usr/include/gtk-3.0/gtk/gtkadjustment.h
 gdk/gdk.h
 -
 gtk/gtktypes.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkappchooser.h
+/usr/include/gtk-3.0/gtk/gtkappchooser.h
 glib.h
 -
 gio/gio.h
@@ -3232,19 +3090,19 @@ gio/gio.h
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkappchooserbutton.h
+/usr/include/gtk-3.0/gtk/gtkappchooserbutton.h
 gtk/gtkcombobox.h
 -
 gio/gio.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkappchooserdialog.h
+/usr/include/gtk-3.0/gtk/gtkappchooserdialog.h
 gtk/gtkdialog.h
 -
 gio/gio.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkappchooserwidget.h
+/usr/include/gtk-3.0/gtk/gtkappchooserwidget.h
 gtk/gtkbox.h
 -
 gtk/gtkmenu.h
@@ -3252,71 +3110,71 @@ gtk/gtkmenu.h
 gio/gio.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkapplication.h
+/usr/include/gtk-3.0/gtk/gtkapplication.h
 gtk/gtkwidget.h
 -
 gio/gio.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkapplicationwindow.h
+/usr/include/gtk-3.0/gtk/gtkapplicationwindow.h
 gtk/gtkwindow.h
 -
 gtk/gtkshortcutswindow.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkaspectframe.h
+/usr/include/gtk-3.0/gtk/gtkaspectframe.h
 gtk/gtkframe.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkassistant.h
+/usr/include/gtk-3.0/gtk/gtkassistant.h
 gtk/gtkwindow.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkbbox.h
+/usr/include/gtk-3.0/gtk/gtkbbox.h
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkbin.h
+/usr/include/gtk-3.0/gtk/gtkbin.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkbindings.h
+/usr/include/gtk-3.0/gtk/gtkbindings.h
 gdk/gdk.h
 -
 gtk/gtkenums.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkborder.h
+/usr/include/gtk-3.0/gtk/gtkborder.h
 glib-object.h
 -
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkbox.h
+/usr/include/gtk-3.0/gtk/gtkbox.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkbuildable.h
+/usr/include/gtk-3.0/gtk/gtkbuildable.h
 gtk/gtkbuilder.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkbuilder.h
+/usr/include/gtk-3.0/gtk/gtkbuilder.h
 gtk/gtkapplication.h
 -
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkbutton.h
+/usr/include/gtk-3.0/gtk/gtkbutton.h
 gtk/gtkbin.h
 -
 gtk/gtkimage.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcalendar.h
+/usr/include/gtk-3.0/gtk/gtkcalendar.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellarea.h
+/usr/include/gtk-3.0/gtk/gtkcellarea.h
 gtk/gtkcellrenderer.h
 -
 gtk/gtkwidget.h
@@ -3324,19 +3182,19 @@ gtk/gtkwidget.h
 gtk/gtktreemodel.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellareabox.h
+/usr/include/gtk-3.0/gtk/gtkcellareabox.h
 gtk/gtkcellarea.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellareacontext.h
+/usr/include/gtk-3.0/gtk/gtkcellareacontext.h
 gtk/gtkcellarea.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcelleditable.h
+/usr/include/gtk-3.0/gtk/gtkcelleditable.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcelllayout.h
+/usr/include/gtk-3.0/gtk/gtkcelllayout.h
 gtk/gtkcellrenderer.h
 -
 gtk/gtkcellarea.h
@@ -3346,45 +3204,45 @@ gtk/gtkbuildable.h
 gtk/gtkbuilder.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellrenderer.h
+/usr/include/gtk-3.0/gtk/gtkcellrenderer.h
 gtk/gtkcelleditable.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellrendereraccel.h
+/usr/include/gtk-3.0/gtk/gtkcellrendereraccel.h
 gtk/gtkcellrenderertext.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellrenderercombo.h
+/usr/include/gtk-3.0/gtk/gtkcellrenderercombo.h
 gtk/gtktreemodel.h
 -
 gtk/gtkcellrenderertext.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellrendererpixbuf.h
+/usr/include/gtk-3.0/gtk/gtkcellrendererpixbuf.h
 gtk/gtkcellrenderer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellrendererprogress.h
+/usr/include/gtk-3.0/gtk/gtkcellrendererprogress.h
 gtk/gtkcellrenderer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellrendererspin.h
+/usr/include/gtk-3.0/gtk/gtkcellrendererspin.h
 gtk/gtkcellrenderertext.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellrendererspinner.h
+/usr/include/gtk-3.0/gtk/gtkcellrendererspinner.h
 gtk/gtkcellrenderer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellrenderertext.h
+/usr/include/gtk-3.0/gtk/gtkcellrenderertext.h
 gtk/gtkcellrenderer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellrenderertoggle.h
+/usr/include/gtk-3.0/gtk/gtkcellrenderertoggle.h
 gtk/gtkcellrenderer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcellview.h
+/usr/include/gtk-3.0/gtk/gtkcellview.h
 gtk/gtkwidget.h
 -
 gtk/gtkcellrenderer.h
@@ -3396,41 +3254,41 @@ gtk/gtkcellareacontext.h
 gtk/gtktreemodel.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcheckbutton.h
+/usr/include/gtk-3.0/gtk/gtkcheckbutton.h
 gtk/gtktogglebutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcheckmenuitem.h
+/usr/include/gtk-3.0/gtk/gtkcheckmenuitem.h
 gtk/gtkmenuitem.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkclipboard.h
+/usr/include/gtk-3.0/gtk/gtkclipboard.h
 gtk/gtkselection.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcolorbutton.h
+/usr/include/gtk-3.0/gtk/gtkcolorbutton.h
 gtk/gtkbutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcolorchooser.h
+/usr/include/gtk-3.0/gtk/gtkcolorchooser.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcolorchooserdialog.h
+/usr/include/gtk-3.0/gtk/gtkcolorchooserdialog.h
 gtk/gtkdialog.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcolorchooserwidget.h
+/usr/include/gtk-3.0/gtk/gtkcolorchooserwidget.h
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcolorutils.h
+/usr/include/gtk-3.0/gtk/gtkcolorutils.h
 glib.h
 -
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcombobox.h
+/usr/include/gtk-3.0/gtk/gtkcombobox.h
 gtk/gtkbin.h
 -
 gtk/gtktreemodel.h
@@ -3438,57 +3296,63 @@ gtk/gtktreemodel.h
 gtk/gtktreeview.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcomboboxtext.h
+/usr/include/gtk-3.0/gtk/gtkcomboboxtext.h
 gtk/gtkcombobox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcontainer.h
+/usr/include/gtk-3.0/gtk/gtkcontainer.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcssprovider.h
+/usr/include/gtk-3.0/gtk/gtkcssprovider.h
 gio/gio.h
 -
 gtk/gtkcsssection.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkcsssection.h
+/usr/include/gtk-3.0/gtk/gtkcsssection.h
 gio/gio.h
 -
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkdebug.h
+/usr/include/gtk-3.0/gtk/gtkdebug.h
 glib.h
 -
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkdialog.h
+/usr/include/gtk-3.0/gtk/gtkdialog.h
 gtk/gtkwindow.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkdnd.h
+/usr/include/gtk-3.0/gtk/gtkdnd.h
 gtk/gtkwidget.h
 -
 gtk/gtkselection.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkdragsource.h
+/usr/include/gtk-3.0/gtk/gtkdragdest.h
 gtk/gtkselection.h
 -
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkdrawingarea.h
+/usr/include/gtk-3.0/gtk/gtkdragsource.h
+gtk/gtkselection.h
+-
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkeditable.h
+/usr/include/gtk-3.0/gtk/gtkdrawingarea.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkentry.h
+/usr/include/gtk-3.0/gtk/gtkeditable.h
+gtk/gtkwidget.h
+-
+
+/usr/include/gtk-3.0/gtk/gtkentry.h
 gtk/gtkeditable.h
 -
 gtk/gtkimcontext.h
@@ -3504,13 +3368,13 @@ gtk/gtkimage.h
 gtk/gtkselection.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkentrybuffer.h
+/usr/include/gtk-3.0/gtk/gtkentrybuffer.h
 glib-object.h
 -
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkentrycompletion.h
+/usr/include/gtk-3.0/gtk/gtkentrycompletion.h
 gdk/gdk.h
 -
 gtk/gtktreemodel.h
@@ -3524,15 +3388,15 @@ gtk/gtktreeviewcolumn.h
 gtk/gtktreemodelfilter.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkenums.h
+/usr/include/gtk-3.0/gtk/gtkenums.h
 glib-object.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkeventbox.h
+/usr/include/gtk-3.0/gtk/gtkeventbox.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkeventcontroller.h
+/usr/include/gtk-3.0/gtk/gtkeventcontroller.h
 gdk/gdk.h
 -
 gtk/gtktypes.h
@@ -3540,137 +3404,137 @@ gtk/gtktypes.h
 gtk/gtkenums.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkexpander.h
+/usr/include/gtk-3.0/gtk/gtkexpander.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfilechooser.h
+/usr/include/gtk-3.0/gtk/gtkfilechooser.h
 gtk/gtkfilefilter.h
 -
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfilechooserbutton.h
+/usr/include/gtk-3.0/gtk/gtkfilechooserbutton.h
 gtk/gtkbox.h
 -
 gtk/gtkfilechooser.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfilechooserdialog.h
+/usr/include/gtk-3.0/gtk/gtkfilechooserdialog.h
 gtk/gtkdialog.h
 -
 gtk/gtkfilechooser.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfilechoosernative.h
+/usr/include/gtk-3.0/gtk/gtkfilechoosernative.h
 gtk/gtkfilechooser.h
 -
 gtk/gtknativedialog.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfilechooserwidget.h
+/usr/include/gtk-3.0/gtk/gtkfilechooserwidget.h
 gtk/gtkfilechooser.h
 -
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfilefilter.h
+/usr/include/gtk-3.0/gtk/gtkfilefilter.h
 glib-object.h
 -
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfixed.h
+/usr/include/gtk-3.0/gtk/gtkfixed.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkflowbox.h
+/usr/include/gtk-3.0/gtk/gtkflowbox.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfontbutton.h
+/usr/include/gtk-3.0/gtk/gtkfontbutton.h
 gtk/gtkbutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfontchooser.h
+/usr/include/gtk-3.0/gtk/gtkfontchooser.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfontchooserdialog.h
+/usr/include/gtk-3.0/gtk/gtkfontchooserdialog.h
 gtk/gtkdialog.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkfontchooserwidget.h
+/usr/include/gtk-3.0/gtk/gtkfontchooserwidget.h
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkframe.h
+/usr/include/gtk-3.0/gtk/gtkframe.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkgesture.h
+/usr/include/gtk-3.0/gtk/gtkgesture.h
 gtk/gtkeventcontroller.h
 -
 gtk/gtkenums.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkgesturedrag.h
+/usr/include/gtk-3.0/gtk/gtkgesturedrag.h
 gtk/gtkwidget.h
 -
 gtk/gtkgesturesingle.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkgesturelongpress.h
+/usr/include/gtk-3.0/gtk/gtkgesturelongpress.h
 gtk/gtkgesturesingle.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkgesturemultipress.h
+/usr/include/gtk-3.0/gtk/gtkgesturemultipress.h
 gtk/gtkwidget.h
 -
 gtk/gtkgesturesingle.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkgesturepan.h
+/usr/include/gtk-3.0/gtk/gtkgesturepan.h
 gtk/gtkenums.h
 -
 gtk/gtkgesturedrag.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkgesturerotate.h
+/usr/include/gtk-3.0/gtk/gtkgesturerotate.h
 gtk/gtkwidget.h
 -
 gtk/gtkgesture.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkgesturesingle.h
+/usr/include/gtk-3.0/gtk/gtkgesturesingle.h
 gtk/gtkgesture.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkgestureswipe.h
+/usr/include/gtk-3.0/gtk/gtkgestureswipe.h
 gtk/gtkwidget.h
 -
 gtk/gtkgesturesingle.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkgesturezoom.h
+/usr/include/gtk-3.0/gtk/gtkgesturezoom.h
 gtk/gtkgesture.h
 -
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkglarea.h
+/usr/include/gtk-3.0/gtk/gtkglarea.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkgrid.h
+/usr/include/gtk-3.0/gtk/gtkgrid.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkheaderbar.h
+/usr/include/gtk-3.0/gtk/gtkheaderbar.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkicontheme.h
+/usr/include/gtk-3.0/gtk/gtkicontheme.h
 gdk-pixbuf/gdk-pixbuf.h
 -
 gdk/gdk.h
@@ -3678,7 +3542,7 @@ gdk/gdk.h
 gtk/gtkstylecontext.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkiconview.h
+/usr/include/gtk-3.0/gtk/gtkiconview.h
 gtk/gtkcontainer.h
 -
 gtk/gtktreemodel.h
@@ -3692,41 +3556,41 @@ gtk/gtkselection.h
 gtk/gtktooltip.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkimage.h
+/usr/include/gtk-3.0/gtk/gtkimage.h
 gio/gio.h
 -
 gtk/deprecated/gtkmisc.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkimcontext.h
+/usr/include/gtk-3.0/gtk/gtkimcontext.h
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkimcontextinfo.h
+/usr/include/gtk-3.0/gtk/gtkimcontextinfo.h
 glib.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkimcontextsimple.h
+/usr/include/gtk-3.0/gtk/gtkimcontextsimple.h
 gtk/gtkimcontext.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkimmulticontext.h
+/usr/include/gtk-3.0/gtk/gtkimmulticontext.h
 gtk/gtkimcontext.h
 -
 gtk/gtkmenushell.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkinfobar.h
+/usr/include/gtk-3.0/gtk/gtkinfobar.h
 gtk/gtkbox.h
 -
 gtk/gtkenums.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkinvisible.h
+/usr/include/gtk-3.0/gtk/gtkinvisible.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtklabel.h
+/usr/include/gtk-3.0/gtk/gtklabel.h
 gtk/deprecated/gtkmisc.h
 -
 gtk/gtkwindow.h
@@ -3734,23 +3598,23 @@ gtk/gtkwindow.h
 gtk/gtkmenu.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtklayout.h
+/usr/include/gtk-3.0/gtk/gtklayout.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtklevelbar.h
+/usr/include/gtk-3.0/gtk/gtklevelbar.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtklinkbutton.h
+/usr/include/gtk-3.0/gtk/gtklinkbutton.h
 gtk/gtkbutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtklistbox.h
+/usr/include/gtk-3.0/gtk/gtklistbox.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkliststore.h
+/usr/include/gtk-3.0/gtk/gtkliststore.h
 gdk/gdk.h
 -
 gtk/gtktreemodel.h
@@ -3758,13 +3622,13 @@ gtk/gtktreemodel.h
 gtk/gtktreesortable.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtklockbutton.h
+/usr/include/gtk-3.0/gtk/gtklockbutton.h
 gtk/gtkbutton.h
 -
 gio/gio.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmain.h
+/usr/include/gtk-3.0/gtk/gtkmain.h
 gdk/gdk.h
 -
 gtk/gtkwidget.h
@@ -3774,17 +3638,17 @@ gtk/gtkbox.h
 gtk/gtkwindow.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmenu.h
+/usr/include/gtk-3.0/gtk/gtkmenu.h
 gtk/gtkaccelgroup.h
 -
 gtk/gtkmenushell.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmenubar.h
+/usr/include/gtk-3.0/gtk/gtkmenubar.h
 gtk/gtkmenushell.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmenubutton.h
+/usr/include/gtk-3.0/gtk/gtkmenubutton.h
 gtk/gtktogglebutton.h
 -
 gtk/gtkmenu.h
@@ -3792,89 +3656,95 @@ gtk/gtkmenu.h
 gtk/gtkpopover.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmenuitem.h
+/usr/include/gtk-3.0/gtk/gtkmenuitem.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmenushell.h
+/usr/include/gtk-3.0/gtk/gtkmenushell.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmenutoolbutton.h
+/usr/include/gtk-3.0/gtk/gtkmenutoolbutton.h
 gtk/gtkmenu.h
 -
 gtk/gtktoolbutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmessagedialog.h
+/usr/include/gtk-3.0/gtk/gtkmessagedialog.h
 gtk/gtkdialog.h
 -
 gtk/gtkenums.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmodelbutton.h
+/usr/include/gtk-3.0/gtk/gtkmodelbutton.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmodules.h
+/usr/include/gtk-3.0/gtk/gtkmodules.h
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkmountoperation.h
+/usr/include/gtk-3.0/gtk/gtkmountoperation.h
 
-/usr/local/include/gtk-3.0/gtk/gtknativedialog.h
+/usr/include/gtk-3.0/gtk/gtknativedialog.h
 gtk/gtkwindow.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtknotebook.h
+/usr/include/gtk-3.0/gtk/gtknotebook.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkoffscreenwindow.h
+/usr/include/gtk-3.0/gtk/gtkoffscreenwindow.h
 gtk/gtkwindow.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkorientable.h
+/usr/include/gtk-3.0/gtk/gtkorientable.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkoverlay.h
+/usr/include/gtk-3.0/gtk/gtkoverlay.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkpagesetup.h
+/usr/include/gtk-3.0/gtk/gtkpadcontroller.h
+gdk/gdk.h
+-
+gtk/gtkeventcontroller.h
+-
+
+/usr/include/gtk-3.0/gtk/gtkpagesetup.h
 gtk/gtkpapersize.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkpaned.h
+/usr/include/gtk-3.0/gtk/gtkpaned.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkpapersize.h
+/usr/include/gtk-3.0/gtk/gtkpapersize.h
 gdk/gdk.h
 -
 gtk/gtkenums.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkplacessidebar.h
+/usr/include/gtk-3.0/gtk/gtkplacessidebar.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkpopover.h
+/usr/include/gtk-3.0/gtk/gtkpopover.h
 gtk/gtkwindow.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkpopovermenu.h
+/usr/include/gtk-3.0/gtk/gtkpopovermenu.h
 gtk/gtkpopover.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkprintcontext.h
+/usr/include/gtk-3.0/gtk/gtkprintcontext.h
 pango/pango.h
 -
 gtk/gtkpagesetup.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkprintoperation.h
+/usr/include/gtk-3.0/gtk/gtkprintoperation.h
 cairo.h
 -
 gtk/gtkmain.h
@@ -3890,37 +3760,37 @@ gtk/gtkprintcontext.h
 gtk/gtkprintoperationpreview.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkprintoperationpreview.h
+/usr/include/gtk-3.0/gtk/gtkprintoperationpreview.h
 cairo.h
 -
 gtk/gtkprintcontext.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkprintsettings.h
+/usr/include/gtk-3.0/gtk/gtkprintsettings.h
 gtk/gtkpapersize.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkprogressbar.h
+/usr/include/gtk-3.0/gtk/gtkprogressbar.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkradiobutton.h
+/usr/include/gtk-3.0/gtk/gtkradiobutton.h
 gtk/gtkcheckbutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkradiomenuitem.h
+/usr/include/gtk-3.0/gtk/gtkradiomenuitem.h
 gtk/gtkcheckmenuitem.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkradiotoolbutton.h
+/usr/include/gtk-3.0/gtk/gtkradiotoolbutton.h
 gtk/gtktoggletoolbutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkrange.h
+/usr/include/gtk-3.0/gtk/gtkrange.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkrecentchooser.h
+/usr/include/gtk-3.0/gtk/gtkrecentchooser.h
 gtk/gtkwidget.h
 -
 gtk/gtkrecentmanager.h
@@ -3928,31 +3798,31 @@ gtk/gtkrecentmanager.h
 gtk/gtkrecentfilter.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkrecentchooserdialog.h
+/usr/include/gtk-3.0/gtk/gtkrecentchooserdialog.h
 gtk/gtkdialog.h
 -
 gtk/gtkrecentchooser.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkrecentchoosermenu.h
+/usr/include/gtk-3.0/gtk/gtkrecentchoosermenu.h
 gtk/gtkmenu.h
 -
 gtk/gtkrecentchooser.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkrecentchooserwidget.h
+/usr/include/gtk-3.0/gtk/gtkrecentchooserwidget.h
 gtk/gtkrecentchooser.h
 -
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkrecentfilter.h
+/usr/include/gtk-3.0/gtk/gtkrecentfilter.h
 glib-object.h
 -
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkrecentmanager.h
+/usr/include/gtk-3.0/gtk/gtkrecentmanager.h
 gdk-pixbuf/gdk-pixbuf.h
 -
 gdk/gdk.h
@@ -3960,7 +3830,7 @@ gdk/gdk.h
 time.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkrender.h
+/usr/include/gtk-3.0/gtk/gtkrender.h
 cairo.h
 -
 pango/pango.h
@@ -3972,19 +3842,19 @@ gtk/gtkenums.h
 gtk/gtktypes.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkrevealer.h
+/usr/include/gtk-3.0/gtk/gtkrevealer.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkscale.h
+/usr/include/gtk-3.0/gtk/gtkscale.h
 gtk/gtkrange.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkscalebutton.h
+/usr/include/gtk-3.0/gtk/gtkscalebutton.h
 gtk/gtkbutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkscrollable.h
+/usr/include/gtk-3.0/gtk/gtkscrollable.h
 gdk/gdk.h
 -
 gtk/gtkenums.h
@@ -3994,103 +3864,109 @@ gtk/gtktypes.h
 gtk/gtkborder.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkscrollbar.h
+/usr/include/gtk-3.0/gtk/gtkscrollbar.h
 gtk/gtkrange.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkscrolledwindow.h
+/usr/include/gtk-3.0/gtk/gtkscrolledwindow.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtksearchbar.h
+/usr/include/gtk-3.0/gtk/gtksearchbar.h
 gtk/gtkrevealer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtksearchentry.h
+/usr/include/gtk-3.0/gtk/gtksearchentry.h
 gtk/gtkentry.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkselection.h
+/usr/include/gtk-3.0/gtk/gtkselection.h
 gtk/gtkwidget.h
 -
 gtk/gtktextiter.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkseparator.h
+/usr/include/gtk-3.0/gtk/gtkseparator.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkseparatormenuitem.h
+/usr/include/gtk-3.0/gtk/gtkseparatormenuitem.h
 gtk/gtkmenuitem.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkseparatortoolitem.h
+/usr/include/gtk-3.0/gtk/gtkseparatortoolitem.h
 gtk/gtktoolitem.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtksettings.h
+/usr/include/gtk-3.0/gtk/gtksettings.h
 gdk/gdk.h
 -
 gtk/gtktypes.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkshortcutsgroup.h
+/usr/include/gtk-3.0/gtk/gtkshortcutlabel.h
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkshortcutssection.h
+/usr/include/gtk-3.0/gtk/gtkshortcutsgroup.h
+gtk/gtkbox.h
+-
+
+/usr/include/gtk-3.0/gtk/gtkshortcutssection.h
 gtk/gtkbox.h
 -
 gtk/gtkshortcutsgroup.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkshortcutsshortcut.h
+/usr/include/gtk-3.0/gtk/gtkshortcutsshortcut.h
 gtk/gtk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkshortcutswindow.h
+/usr/include/gtk-3.0/gtk/gtkshortcutswindow.h
 gtk/gtkwindow.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkshow.h
+/usr/include/gtk-3.0/gtk/gtkshow.h
+gtk/gtkwindow.h
+-
 
-/usr/local/include/gtk-3.0/gtk/gtksizegroup.h
+/usr/include/gtk-3.0/gtk/gtksizegroup.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtksizerequest.h
+/usr/include/gtk-3.0/gtk/gtksizerequest.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkspinbutton.h
+/usr/include/gtk-3.0/gtk/gtkspinbutton.h
 gtk/gtkentry.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkspinner.h
+/usr/include/gtk-3.0/gtk/gtkspinner.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkstack.h
+/usr/include/gtk-3.0/gtk/gtkstack.h
 gtk/gtkcontainer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkstacksidebar.h
+/usr/include/gtk-3.0/gtk/gtkstacksidebar.h
 gtk/gtkbin.h
 -
 gtk/gtkstack.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkstackswitcher.h
+/usr/include/gtk-3.0/gtk/gtkstackswitcher.h
 gtk/gtkbox.h
 -
 gtk/gtkstack.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkstatusbar.h
+/usr/include/gtk-3.0/gtk/gtkstatusbar.h
 gtk/gtkbox.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkstylecontext.h
+/usr/include/gtk-3.0/gtk/gtkstylecontext.h
 gtk/gtkborder.h
 -
 gtk/gtkcsssection.h
@@ -4102,7 +3978,7 @@ gtk/gtktypes.h
 atk/atk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkstyleprovider.h
+/usr/include/gtk-3.0/gtk/gtkstyleprovider.h
 glib-object.h
 -
 gtk/gtkenums.h
@@ -4114,23 +3990,23 @@ gtk/deprecated/gtkstyleproperties.h
 gtk/gtktypes.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkswitch.h
+/usr/include/gtk-3.0/gtk/gtkswitch.h
 gtk/gtkwidget.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktestutils.h
+/usr/include/gtk-3.0/gtk/gtktestutils.h
 gtk/gtkwidget.h
 -
 gtk/gtkspinbutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktextattributes.h
+/usr/include/gtk-3.0/gtk/gtktextattributes.h
 gdk/gdk.h
 -
 gtk/gtkenums.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktextbuffer.h
+/usr/include/gtk-3.0/gtk/gtktextbuffer.h
 gtk/gtkwidget.h
 -
 gtk/gtkclipboard.h
@@ -4144,17 +4020,17 @@ gtk/gtktextmark.h
 gtk/gtktextchild.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktextbufferrichtext.h
+/usr/include/gtk-3.0/gtk/gtktextbufferrichtext.h
 gtk/gtktextbuffer.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktextchild.h
+/usr/include/gtk-3.0/gtk/gtktextchild.h
 gdk/gdk.h
 -
 glib-object.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktextiter.h
+/usr/include/gtk-3.0/gtk/gtktextiter.h
 gtk/gtktextattributes.h
 -
 gtk/gtktextchild.h
@@ -4162,19 +4038,19 @@ gtk/gtktextchild.h
 gtk/gtktexttag.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktextmark.h
+/usr/include/gtk-3.0/gtk/gtktextmark.h
 
-/usr/local/include/gtk-3.0/gtk/gtktexttag.h
+/usr/include/gtk-3.0/gtk/gtktexttag.h
 gdk/gdk.h
 -
 gtk/gtkenums.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktexttagtable.h
+/usr/include/gtk-3.0/gtk/gtktexttagtable.h
 gtk/gtktexttag.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktextview.h
+/usr/include/gtk-3.0/gtk/gtktextview.h
 gtk/gtkcontainer.h
 -
 gtk/gtkimcontext.h
@@ -4184,25 +4060,25 @@ gtk/gtktextbuffer.h
 gtk/gtkmenu.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktogglebutton.h
+/usr/include/gtk-3.0/gtk/gtktogglebutton.h
 gtk/gtkbutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktoggletoolbutton.h
+/usr/include/gtk-3.0/gtk/gtktoggletoolbutton.h
 gtk/gtktoolbutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktoolbar.h
+/usr/include/gtk-3.0/gtk/gtktoolbar.h
 gtk/gtkcontainer.h
 -
 gtk/gtktoolitem.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktoolbutton.h
+/usr/include/gtk-3.0/gtk/gtktoolbutton.h
 gtk/gtktoolitem.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktoolitem.h
+/usr/include/gtk-3.0/gtk/gtktoolitem.h
 gtk/gtkbin.h
 -
 gtk/gtkmenuitem.h
@@ -4210,13 +4086,13 @@ gtk/gtkmenuitem.h
 gtk/gtksizegroup.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktoolitemgroup.h
+/usr/include/gtk-3.0/gtk/gtktoolitemgroup.h
 gtk/gtkcontainer.h
 -
 gtk/gtktoolitem.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktoolpalette.h
+/usr/include/gtk-3.0/gtk/gtktoolpalette.h
 gtk/gtkcontainer.h
 -
 gtk/gtkdnd.h
@@ -4224,7 +4100,7 @@ gtk/gtkdnd.h
 gtk/gtktoolitem.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktoolshell.h
+/usr/include/gtk-3.0/gtk/gtktoolshell.h
 gtk/gtkenums.h
 -
 pango/pango.h
@@ -4232,27 +4108,27 @@ pango/pango.h
 gtk/gtksizegroup.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktooltip.h
+/usr/include/gtk-3.0/gtk/gtktooltip.h
 gtk/gtkwindow.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktreednd.h
+/usr/include/gtk-3.0/gtk/gtktreednd.h
 gtk/gtktreemodel.h
 -
 gtk/gtkdnd.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktreemodel.h
+/usr/include/gtk-3.0/gtk/gtktreemodel.h
 glib-object.h
 -
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktreemodelfilter.h
+/usr/include/gtk-3.0/gtk/gtktreemodelfilter.h
 gtk/gtktreemodel.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktreemodelsort.h
+/usr/include/gtk-3.0/gtk/gtktreemodelsort.h
 gdk/gdk.h
 -
 gtk/gtktreemodel.h
@@ -4260,17 +4136,17 @@ gtk/gtktreemodel.h
 gtk/gtktreesortable.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktreeselection.h
+/usr/include/gtk-3.0/gtk/gtktreeselection.h
 gtk/gtktreeview.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktreesortable.h
+/usr/include/gtk-3.0/gtk/gtktreesortable.h
 gtk/gtkenums.h
 -
 gtk/gtktreemodel.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktreestore.h
+/usr/include/gtk-3.0/gtk/gtktreestore.h
 gdk/gdk.h
 -
 gtk/gtktreemodel.h
@@ -4280,7 +4156,7 @@ gtk/gtktreesortable.h
 stdarg.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktreeview.h
+/usr/include/gtk-3.0/gtk/gtktreeview.h
 gtk/gtkcontainer.h
 -
 gtk/gtktreemodel.h
@@ -4292,7 +4168,7 @@ gtk/gtkdnd.h
 gtk/gtkentry.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktreeviewcolumn.h
+/usr/include/gtk-3.0/gtk/gtktreeviewcolumn.h
 gtk/gtkcellrenderer.h
 -
 gtk/gtktreemodel.h
@@ -4302,25 +4178,25 @@ gtk/gtktreesortable.h
 gtk/gtkcellarea.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktypebuiltins.h
+/usr/include/gtk-3.0/gtk/gtktypebuiltins.h
 glib-object.h
 -
 gdk/gdk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtktypes.h
+/usr/include/gtk-3.0/gtk/gtktypes.h
 
-/usr/local/include/gtk-3.0/gtk/gtkversion.h
+/usr/include/gtk-3.0/gtk/gtkversion.h
 
-/usr/local/include/gtk-3.0/gtk/gtkviewport.h
+/usr/include/gtk-3.0/gtk/gtkviewport.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkvolumebutton.h
+/usr/include/gtk-3.0/gtk/gtkvolumebutton.h
 gtk/gtkscalebutton.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkwidget.h
+/usr/include/gtk-3.0/gtk/gtkwidget.h
 gdk/gdk.h
 -
 gtk/gtkaccelgroup.h
@@ -4332,7 +4208,7 @@ gtk/gtktypes.h
 atk/atk.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkwidgetpath.h
+/usr/include/gtk-3.0/gtk/gtkwidgetpath.h
 glib-object.h
 -
 gdk/gdk.h
@@ -4342,7 +4218,7 @@ gtk/gtkenums.h
 gtk/gtktypes.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkwindow.h
+/usr/include/gtk-3.0/gtk/gtkwindow.h
 gtk/gtkapplication.h
 -
 gtk/gtkaccelgroup.h
@@ -4350,7 +4226,247 @@ gtk/gtkaccelgroup.h
 gtk/gtkbin.h
 -
 
-/usr/local/include/gtk-3.0/gtk/gtkwindowgroup.h
+/usr/include/gtk-3.0/gtk/gtkwindowgroup.h
 gtkwindow.h
-/usr/local/include/gtk-3.0/gtk/gtkwindow.h
+/usr/include/gtk-3.0/gtk/gtkwindow.h
+
+/usr/include/pango-1.0/pango/pango-attributes.h
+pango/pango-font.h
+-
+glib-object.h
+-
+
+/usr/include/pango-1.0/pango/pango-bidi-type.h
+glib.h
+-
+pango/pango-version-macros.h
+-
+
+/usr/include/pango-1.0/pango/pango-break.h
+glib.h
+-
+pango/pango-item.h
+-
+
+/usr/include/pango-1.0/pango/pango-context.h
+pango/pango-font.h
+-
+pango/pango-fontmap.h
+-
+pango/pango-attributes.h
+-
+
+/usr/include/pango-1.0/pango/pango-coverage.h
+glib.h
+-
+pango/pango-version-macros.h
+-
+
+/usr/include/pango-1.0/pango/pango-engine.h
+pango/pango-types.h
+-
+pango/pango-item.h
+-
+pango/pango-font.h
+-
+pango/pango-glyph.h
+-
+pango/pango-script.h
+-
+
+/usr/include/pango-1.0/pango/pango-enum-types.h
+glib-object.h
+-
+pango/pango-version-macros.h
+-
+
+/usr/include/pango-1.0/pango/pango-features.h
+
+/usr/include/pango-1.0/pango/pango-font.h
+pango/pango-coverage.h
+-
+pango/pango-types.h
+-
+glib-object.h
+-
+
+/usr/include/pango-1.0/pango/pango-fontmap.h
+pango/pango-font.h
+-
+pango/pango-fontset.h
+-
+
+/usr/include/pango-1.0/pango/pango-fontset.h
+pango/pango-coverage.h
+-
+pango/pango-types.h
+-
+glib-object.h
+-
+
+/usr/include/pango-1.0/pango/pango-glyph-item.h
+pango/pango-attributes.h
+-
+pango/pango-break.h
+-
+pango/pango-item.h
+-
+pango/pango-glyph.h
+-
+
+/usr/include/pango-1.0/pango/pango-glyph.h
+pango/pango-types.h
+-
+pango/pango-item.h
+-
+
+/usr/include/pango-1.0/pango/pango-gravity.h
+glib.h
+-
+pango/pango-matrix.h
+-
+pango/pango-script.h
+-
+
+/usr/include/pango-1.0/pango/pango-item.h
+pango/pango-types.h
+-
+
+/usr/include/pango-1.0/pango/pango-language.h
+glib.h
+-
+glib-object.h
+-
+pango/pango-version-macros.h
+-
+pango/pango-script.h
+-
+
+/usr/include/pango-1.0/pango/pango-layout.h
+pango/pango-attributes.h
+-
+pango/pango-context.h
+-
+pango/pango-glyph-item.h
+-
+pango/pango-tabs.h
+-
+
+/usr/include/pango-1.0/pango/pango-matrix.h
+glib.h
+-
+glib-object.h
+-
+pango/pango-types.h
+-
+
+/usr/include/pango-1.0/pango/pango-renderer.h
+pango/pango-layout.h
+-
+
+/usr/include/pango-1.0/pango/pango-script.h
+glib.h
+-
+pango/pango-version-macros.h
+-
+pango/pango-language.h
+-
+
+/usr/include/pango-1.0/pango/pango-tabs.h
+pango/pango-types.h
+-
+
+/usr/include/pango-1.0/pango/pango-types.h
+glib.h
+-
+glib-object.h
+-
+pango/pango-version-macros.h
+-
+pango/pango-gravity.h
+-
+pango/pango-language.h
+-
+pango/pango-matrix.h
+-
+pango/pango-script.h
+-
+pango/pango-bidi-type.h
+-
+
+/usr/include/pango-1.0/pango/pango-utils.h
+stdio.h
+-
+glib.h
+-
+pango/pango-font.h
+-
+
+/usr/include/pango-1.0/pango/pango-version-macros.h
+pango/pango-features.h
+-
+glib.h
+-
+
+/usr/include/pango-1.0/pango/pango.h
+pango/pango-attributes.h
+-
+pango/pango-bidi-type.h
+-
+pango/pango-break.h
+-
+pango/pango-context.h
+-
+pango/pango-coverage.h
+-
+pango/pango-engine.h
+-
+pango/pango-enum-types.h
+-
+pango/pango-features.h
+-
+pango/pango-font.h
+-
+pango/pango-fontmap.h
+-
+pango/pango-fontset.h
+-
+pango/pango-glyph.h
+-
+pango/pango-glyph-item.h
+-
+pango/pango-gravity.h
+-
+pango/pango-item.h
+-
+pango/pango-layout.h
+-
+pango/pango-matrix.h
+-
+pango/pango-renderer.h
+-
+pango/pango-script.h
+-
+pango/pango-tabs.h
+-
+pango/pango-types.h
+-
+pango/pango-utils.h
+-
+pango/pango-version-macros.h
+-
+
+/usr/include/pango-1.0/pango/pangocairo.h
+pango/pango.h
+-
+cairo.h
+-
+
+/usr/lib/glib-2.0/include/glibconfig.h
+glib/gmacros.h
+-
+limits.h
+-
+float.h
+-
 

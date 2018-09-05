@@ -15,8 +15,6 @@ private:
     void checkLiftUp(Leap::Frame frame);
     void checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller);
     void checkKeyTap(Leap::Gesture gesture);
-
-
 public:
     void checkGestures(Leap::Frame frame, Leap::Controller controller);
 };

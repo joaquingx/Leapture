@@ -13,9 +13,9 @@ class VisualInterface{
     void init_list(GtkWidget *list);
     void add_to_list(GtkWidget *list, const gchar *str);
     static void on_changed(GtkWidget *widget, gpointer label);
-    static bool key_event(GtkWidget *widget, GdkEventKey *event);
+    static bool key_event(GtkWidget *widget, GdkEventKey *event, gpointer label);
 
-public:
+  public:
     void player();
     void startDisplay();
 };

@@ -2,6 +2,8 @@
 // Created by joaquin on 04/09/18.
 //
 #include "interface.h"
+#include <cstdlib>
+
 //#include "state.h"
 
 void VisualInterface::init_list(GtkWidget *list) {
@@ -45,7 +47,9 @@ void VisualInterface::on_changed(GtkWidget *widget, gpointer label) {
         gtk_tree_model_get(model, &iter, LIST_ITEM, &value,  -1);
         gtk_label_set_text(GTK_LABEL(label), value);
         g_free(value);
+        
     }
+
 }
 
 void VisualInterface::player() {
@@ -84,11 +88,14 @@ void VisualInterface::player() {
     add_to_list(list, "The Verdict");
     add_to_list(list, "North Face");
     add_to_list(list, "Der Untergang");
+    add_to_list(list, "oneko");
 
     selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(list));
+    
+    g_signal_connect(window, "key-release-event", G_CALLBACK(key_event), label);
+    
     g_signal_connect(selection, "changed", G_CALLBACK(on_changed), label);
     
-    g_signal_connect(window, "key-release-event", G_CALLBACK(key_event), NULL);
 
     g_signal_connect(G_OBJECT (window), "destroy",
                      G_CALLBACK(gtk_main_quit), NULL);
@@ -131,7 +138,18 @@ void VisualInterface::startDisplay() {
     gtk_main();
 }
 
-bool VisualInterface::key_event(GtkWidget *widget, GdkEventKey *event){
-    g_printerr("%s\n",gdk_keyval_name(event->keyval));
+bool VisualInterface::key_event(GtkWidget *widget, GdkEventKey *event, gpointer label)
+{
+
+char ch[50];
+const gchar *word=gtk_label_get_text(GTK_LABEL(label));
+sprintf(ch,word);   
+//printf("%s\n", ch);
+    
+
+    if (!g_strcmp0(gdk_keyval_name(event->keyval),"Return")){
+        g_printerr("value %s\n", gtk_label_get_text(GTK_LABEL(label)));
+        system(ch);
+    }
     return FALSE;
 }

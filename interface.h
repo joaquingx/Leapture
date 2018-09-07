@@ -2,6 +2,8 @@
 #define LEAPGESTURES_INTERFACE_H
 
 #include <gtk/gtk.h>
+#include <string>
+using namespace std;
 
 
 class VisualInterface{
@@ -18,6 +20,7 @@ class VisualInterface{
   public:
     void player();
     void startDisplay();
+    void createGesture(const gchar *gestureDetected);
 };
 
 #endif //LEAPGESTURES_INTERFACE_H

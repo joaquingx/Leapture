@@ -63,9 +63,8 @@ void BaseListener::onServiceDisconnect(const Leap::Controller& controller) {
 // *****************************Pedefined Shit*************************************
 
 
-
+OwnGestures Og;
 void BaseListener::onFrame(const Leap::Controller& controller) {
-    OwnGestures Og;
     const Leap::Frame frame = controller.frame();
     Og.checkGestures(frame, controller);
 }

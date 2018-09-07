@@ -3,18 +3,81 @@
 //
 #include "gestures.h"
 #include "state.h"
+#include "interface.h"
+#define STATES 4
+#define NITEMS 5
 using namespace std;
 
+int cnt=0,cMode=0;
+string toDo;
+string OwnGestures::getChavoCommand() {
+    if(currentState == Principal){
+        if(!(cnt%NITEMS))
+        {
+            if(!(cMode % 2))
+                toDo = "xdotool key Down", cMode++;
+            else
+                toDo = "xdotool key Up", cMode++;
+        }
+        ++cnt;
+    }
+    return toDo;
+}
+
+string OwnGestures::grabCommand(const gchar *gesture) {
+    VisualInterface interface;
+    interface.createGesture(gesture);
+}
+
+OwnGestures::OwnGestures() {
+    bindMap.resize(STATES);
+    bindMap[Begin]["Fist"] = "xdotool key super+w";
+    bindMap[Begin]["Chavo"] = "";
+    bindMap[Principal]["Fist"] = "xdotool key Return";
+    //    bindMap[Free]["Fist"] = grabCommand("Fist");
+//    bindMap[Free]["Chavo"] = grabCommand("Chavo");
+//    bindMap[Free]["LiftUp"] = grabCommand("LiftUp");
+}
+
+void OwnGestures::manageAccordingState(string gesture) {
+    cout << "Gesture is " << gesture << "and the command is" << bindMap[currentState][gesture] << "\n";
+    if(currentState == Free) {
+        grabCommand(gesture.c_str());
+    }
+    else {
+        bindMap[Principal]["Chavo"] = getChavoCommand();
+        system((bindMap[currentState][gesture]).c_str());
+    }
+}
+
 void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) {
-    checkFist(frame);
-    checkLiftUp(frame);
-    checkPredefinedGestures(frame, controller);
+    bool anyoneActivated=false;
+//    cout << currentState << "\n";
+    cout << "frametimestamp:" << frame.timestamp() << " mintimestamp:"<< minTimeStamp << "\n";
+
+    if(frame.timestamp() > minTimeStamp){
+        if(checkFist(frame)){
+            anyoneActivated=true;
+            manageAccordingState("Fist");
+        }
+        else if(checkLiftUp(frame)){
+            anyoneActivated=true;
+            manageAccordingState("LiftUp");
+        }
+        else if(checkPredefinedGestures(frame, controller)){
+            anyoneActivated=true;
+            manageAccordingState("Chavo");
+        }
+        if(anyoneActivated){// minimium time between gestures binding
+            minTimeStamp = frame.timestamp() + 400000;
+        }
+    }
 }
 bool OwnGestures::getExtendedFingers(Leap::FingerList fl) {
     return (fl.extended().count() == 0);
 }
 
-void OwnGestures::checkFist(Leap::Frame frame) {
+bool OwnGestures::checkFist(Leap::Frame frame) {
     Leap::HandList hands = frame.hands();
     for(Leap::HandList::const_iterator hl = hands.begin() ; hl!= hands.end(); ++hl){
         const Leap::Hand hand = *hl;
@@ -35,26 +98,12 @@ void OwnGestures::checkFist(Leap::Frame frame) {
         }
         sum /= 10;
         if(sum <= minValue && getExtendedFingers(fl)){
-            cout << "********************************************\n";
-            cout << "********************************************\n";
-            cout << "********************************************\n";
-            cout << "********************************************\n";
-            cout << "********************************************\n";
-            cout << "********************************************\n";
-            cout << "********************************************\n";
-            cout << "Fist Detected-------------------------------\n";
-//            if(!flag) {
-            if(currentState == Begin){ //shitty code
-                system("xdotool key super+w");
-            }
-            if(currentState == Free){ // as above
-
-            }
+            return true;
         }
     }
 }
 
-void OwnGestures::checkLiftUp(Leap::Frame frame) {
+bool OwnGestures::checkLiftUp(Leap::Frame frame) {
     int numberHands = frame.hands().count();
     Leap::HandList hands = frame.hands();
     Leap::Vector palmNormals[2];
@@ -70,25 +119,16 @@ void OwnGestures::checkLiftUp(Leap::Frame frame) {
         (palmNormals[0].roll() < 0.0f) && (palmNormals[1].roll() < 0.0f) &&
         (palmVelocities[0].z > 50.0f) && (palmVelocities[1].z > 50.0f) &&
         (palmVelocities[0].z < 300.0f) && (palmVelocities[1].z < 300.0f)) {
-        cout << "****************************************\n";
-        cout << "****************************************\n";
-        cout << "****************************************\n";
-        cout << "****************************************\n";
-        cout << "****************************************\n";
-        cout << "****************************************\n";
-        cout << "****************************************\n";
-        cout << "****************************************\n";
-        cout << "****************************************\n";
-        cout << "Lift Gesture detected\n";
-        system("emacs");
+        return true;
     }
 }
 
 
 
-void OwnGestures::checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller) {
+bool OwnGestures::checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller) {
     const std::string stateNames[] = {"STATE_INVALID", "STATE_START", "STATE_UPDATE", "STATE_END"};
     const Leap::GestureList gestures = frame.gestures();
+    bool isActivated=false;
     for (int g = 0; g < gestures.count(); ++g) {
         Leap::Gesture gesture = gestures[g];
 
@@ -131,7 +171,7 @@ void OwnGestures::checkPredefinedGestures(Leap::Frame frame, Leap::Controller co
             }
             case Leap::Gesture::TYPE_KEY_TAP:
             {
-                checkKeyTap(gesture);
+                isActivated = checkKeyTap(gesture);
                 break;
             }
             case Leap::Gesture::TYPE_SCREEN_TAP:
@@ -150,28 +190,23 @@ void OwnGestures::checkPredefinedGestures(Leap::Frame frame, Leap::Controller co
             case Leap::Gesture::TYPE_INVALID:break;
         }
     }
+    return isActivated;
 }
-int cnt = 0 , cMode = 0;
-string toDo;
-void OwnGestures::checkKeyTap(Leap::Gesture gesture) {
+
+bool OwnGestures::checkKeyTap(Leap::Gesture gesture) {
     Leap::KeyTapGesture tap = gesture;
     std::cout << std::string(2, ' ')
               << "Key Tap id: " << gesture.id()
               << ", position: " << tap.position()
               << ", direction: " << tap.direction()<< std::endl;
+    return 1;
 
-    int mult = 4;
-    if(currentState == Principal){ //shitty code
-        if(!(cnt%mult))
-        {
-            cout << cnt << "\n";
-            if(!(cMode % 2))
-                toDo = "xdotool key Down", cMode++;
-            else
-                toDo = "xdotool key Up", cMode++;
-        }
-//        cout << "Estoy aca! con este todo: " + toDo + "\n";
-        system(toDo.c_str());
-        ++cnt;
-    }
 }
+
+
+
+
+
+
+
+

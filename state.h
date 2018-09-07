@@ -7,7 +7,8 @@
 enum states{
     Begin,
     Principal,
-    Free
+    Free,
+    sxhkd
 };
 extern enum states currentState;
 //

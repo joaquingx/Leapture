@@ -3,8 +3,12 @@
 //
 #include "interface.h"
 #include <cstdlib>
+#include <string>
+#include <iostream>
 
-//#include "state.h"
+using namespace std;
+
+#include "state.h"
 
 void VisualInterface::init_list(GtkWidget *list) {
     GtkCellRenderer *renderer;
@@ -83,9 +87,9 @@ void VisualInterface::player() {
     gtk_container_add(GTK_CONTAINER(window), vbox);
 
     init_list(list);
-    add_to_list(list, "Aliens");
-    add_to_list(list, "Leon");
-    add_to_list(list, "The Verdict");
+    add_to_list(list, "Dummy Item");
+    add_to_list(list, "Dummy Item");
+    add_to_list(list, "Create Gesture");
     add_to_list(list, "North Face");
     add_to_list(list, "Der Untergang");
     add_to_list(list, "oneko");
@@ -103,7 +107,6 @@ void VisualInterface::player() {
     gtk_widget_show_all(window);
 
     gtk_main();
-
 }
 
 void VisualInterface::startDisplay() {
@@ -138,18 +141,73 @@ void VisualInterface::startDisplay() {
     gtk_main();
 }
 
+
+
 bool VisualInterface::key_event(GtkWidget *widget, GdkEventKey *event, gpointer label)
 {
-
-char ch[50];
-const gchar *word=gtk_label_get_text(GTK_LABEL(label));
-sprintf(ch,word);   
-//printf("%s\n", ch);
-    
+    char ch[50];
+    const gchar *word=gtk_label_get_text(GTK_LABEL(label));
+    sprintf(ch,word);
 
     if (!g_strcmp0(gdk_keyval_name(event->keyval),"Return")){
+        if(strcmp(ch,"Create Gesture")==0) {
+//        std::cout << "Entre aca wtf\n" << ch << "\n";
+            system("xdotool key super+w");
+            currentState = Free;
+//            sleep(1000);
+        }
         g_printerr("value %s\n", gtk_label_get_text(GTK_LABEL(label)));
         system(ch);
     }
     return FALSE;
+}
+
+void VisualInterface::createGesture(const gchar *gestureDetected) {
+    GtkWidget *window;
+    GtkWidget *list;
+
+    GtkWidget *vbox;
+    GtkWidget *label;
+    GtkTreeSelection *selection;
+
+    gtk_init(NULL,NULL);
+
+    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    list = gtk_tree_view_new();
+
+    gtk_window_set_title(GTK_WINDOW(window), "List view");
+    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+    gtk_container_set_border_width(GTK_CONTAINER(window), 0);
+    gtk_window_set_default_size(GTK_WINDOW(window), 270, 250);
+
+    gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(list), FALSE);
+
+    vbox = gtk_vbox_new(FALSE, 0);
+
+    gtk_box_pack_start(GTK_BOX(vbox), list, TRUE, TRUE, 5);
+
+    label = gtk_label_new("");
+    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 5);
+
+    gtk_container_add(GTK_CONTAINER(window), vbox);
+
+    init_list(list);
+    add_to_list(list, "Gesture Detected");
+    add_to_list(list, gestureDetected);
+    add_to_list(list, "Fist to accept - Chavo to Decline ");
+
+    selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(list));
+
+    g_signal_connect(window, "key-release-event", G_CALLBACK(key_event), label);
+
+    g_signal_connect(selection, "changed", G_CALLBACK(on_changed), label);
+
+
+    g_signal_connect(G_OBJECT (window), "destroy",
+                     G_CALLBACK(gtk_main_quit), NULL);
+
+    gtk_widget_show_all(window);
+
+    gtk_main();
+
 }

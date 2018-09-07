@@ -6,16 +6,28 @@
 #define LEAPGESTURES_GESTURES_H
 
 #include <Leap.h>
+#include <string>
+#include <map>
+#include <vector>
+#include "state.h"
+
+using namespace std;
 
 class OwnGestures{
 private:
-    bool flag=false;
-    void checkFist(Leap::Frame frame);
+    // e.g. bindMap[Begin]["Fist"] = "oneko" means that with fist, in begin state we'll exec an oneko
+    int64_t minTimeStamp = 0;
+    vector< map<string,string> > bindMap;
+    bool checkFist(Leap::Frame frame);
     bool getExtendedFingers(Leap::FingerList fl);
-    void checkLiftUp(Leap::Frame frame);
-    void checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller);
-    void checkKeyTap(Leap::Gesture gesture);
+    bool checkLiftUp(Leap::Frame frame);
+    bool checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller);
+    bool checkKeyTap(Leap::Gesture gesture);
+    void manageAccordingState(string gesture);
+    string getChavoCommand();
+    string grabCommand(const char *gesture);
 public:
+    OwnGestures();
     void checkGestures(Leap::Frame frame, Leap::Controller controller);
 };
 

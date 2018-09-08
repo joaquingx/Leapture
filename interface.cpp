@@ -57,7 +57,6 @@ void VisualInterface::on_changed(GtkWidget *widget, gpointer label) {
 }
 
 void VisualInterface::player() {
-
     GtkWidget *window;
     GtkWidget *list;
 
@@ -141,8 +140,7 @@ void VisualInterface::startDisplay() {
     gtk_main();
 }
 
-
-
+bool flag = 1;
 bool VisualInterface::key_event(GtkWidget *widget, GdkEventKey *event, gpointer label)
 {
     char ch[50];
@@ -156,11 +154,15 @@ bool VisualInterface::key_event(GtkWidget *widget, GdkEventKey *event, gpointer 
             currentState = Free;
 //            sleep(1000);
         }
-        g_printerr("value %s\n", gtk_label_get_text(GTK_LABEL(label)));
-        system(ch);
+        else if(strcmp(ch,"Proceed to bind with command!")==0) {
+//            bindWithCommand();
+        }
+//        g_printerr("value %s\n", gtk_label_get_text(GTK_LABEL(label)));
+//        system(ch);
     }
     return FALSE;
 }
+
 
 void VisualInterface::createGesture(const gchar *gestureDetected) {
     GtkWidget *window;
@@ -194,7 +196,12 @@ void VisualInterface::createGesture(const gchar *gestureDetected) {
     init_list(list);
     add_to_list(list, "Gesture Detected");
     add_to_list(list, gestureDetected);
-    add_to_list(list, "Fist to accept - Chavo to Decline ");
+    add_to_list(list, "Bad Recognition!, repeat grab");
+    add_to_list(list, "google-chrome-stable");
+    add_to_list(list, "termite");
+    add_to_list(list, "oneko");
+    add_to_list(list, "chromium");
+
 
     selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(list));
 

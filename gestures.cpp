@@ -4,6 +4,7 @@
 #include "gestures.h"
 #include "state.h"
 #include "interface.h"
+#include "thread"
 #define STATES 4
 #define NITEMS 5
 using namespace std;
@@ -24,27 +25,31 @@ string OwnGestures::getChavoCommand() {
     return toDo;
 }
 
-string OwnGestures::grabCommand(const gchar *gesture) {
-    VisualInterface interface;
-    interface.createGesture(gesture);
+void OwnGestures::grabCommand(const gchar *gesture) {
+    currentState = Principal;
+    thread t1(&VisualInterface::createGesture,this->interface,gesture);
+    t1.detach();
 }
 
-OwnGestures::OwnGestures() {
+OwnGestures::OwnGestures(VisualInterface *& interface) {
     bindMap.resize(STATES);
     bindMap[Begin]["Fist"] = "xdotool key super+w";
     bindMap[Begin]["Chavo"] = "";
     bindMap[Principal]["Fist"] = "xdotool key Return";
+    this->interface = interface;
     //    bindMap[Free]["Fist"] = grabCommand("Fist");
 //    bindMap[Free]["Chavo"] = grabCommand("Chavo");
 //    bindMap[Free]["LiftUp"] = grabCommand("LiftUp");
 }
 
 void OwnGestures::manageAccordingState(string gesture) {
+    // Better solution might exist.
     cout << "Gesture is " << gesture << "and the command is" << bindMap[currentState][gesture] << "\n";
     if(currentState == Free) {
         grabCommand(gesture.c_str());
     }
     else {
+        cout << "imhere\n";
         bindMap[Principal]["Chavo"] = getChavoCommand();
         system((bindMap[currentState][gesture]).c_str());
     }
@@ -52,11 +57,13 @@ void OwnGestures::manageAccordingState(string gesture) {
 
 void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) {
     bool anyoneActivated=false;
+//    cout << "Don't give up\n";
 //    cout << currentState << "\n";
-    cout << "frametimestamp:" << frame.timestamp() << " mintimestamp:"<< minTimeStamp << "\n";
-
+//    cout << "frametimestamp:" << frame.timestamp() << " mintimestamp:"<< minTimeStamp << "\n";
+    int64_t extra = 0;
     if(frame.timestamp() > minTimeStamp){
         if(checkFist(frame)){
+            extra += 200000;
             anyoneActivated=true;
             manageAccordingState("Fist");
         }
@@ -69,7 +76,7 @@ void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) 
             manageAccordingState("Chavo");
         }
         if(anyoneActivated){// minimium time between gestures binding
-            minTimeStamp = frame.timestamp() + 400000;
+            minTimeStamp = frame.timestamp() + 400000 + extra;
         }
     }
 }
@@ -202,6 +209,7 @@ bool OwnGestures::checkKeyTap(Leap::Gesture gesture) {
     return 1;
 
 }
+
 
 
 

@@ -14,18 +14,24 @@ int main(int argc, char** argv) {
     // Create a sample listener and controller
 //    State * currentState;
 //    currentState->setCurrentState(State::states::Begin);
-    BaseListener listener;
     Leap::Controller controller;
-    VisualInterface interface;
-    // Have the sample listener receive events from the controller
+    VisualInterface * interface = new VisualInterface();
+    BaseListener listener(interface);
+        // Have the sample listener receive events from the controller
     controller.addListener(listener);
 
-    interface.startDisplay();
+    interface->startDisplay();
 //    currentState = Begin;
     // It gains focus over other processes
     currentState = Principal;
-    interface.player();
-
+    interface->player();
+    states lastCurrent = currentState;
+    while(true){
+        if(lastCurrent != currentState){
+            cout << "I got it\n";
+        }
+        lastCurrent = currentState;
+    }
 
 
     if (argc > 1 && strcmp(argv[1], "--bg") == 0)

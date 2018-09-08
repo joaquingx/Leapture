@@ -10,6 +10,7 @@
 #include <map>
 #include <vector>
 #include "state.h"
+#include "interface.h"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ private:
     // e.g. bindMap[Begin]["Fist"] = "oneko" means that with fist, in begin state we'll exec an oneko
     int64_t minTimeStamp = 0;
     vector< map<string,string> > bindMap;
+    VisualInterface *interface;
     bool checkFist(Leap::Frame frame);
     bool getExtendedFingers(Leap::FingerList fl);
     bool checkLiftUp(Leap::Frame frame);
@@ -25,9 +27,9 @@ private:
     bool checkKeyTap(Leap::Gesture gesture);
     void manageAccordingState(string gesture);
     string getChavoCommand();
-    string grabCommand(const char *gesture);
+    void grabCommand(const char *gesture);
 public:
-    OwnGestures();
+    OwnGestures(VisualInterface *& interface);
     void checkGestures(Leap::Frame frame, Leap::Controller controller);
 };
 

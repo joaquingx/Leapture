@@ -5,9 +5,9 @@
 #ifndef LEAPGESTURES_STATE_H
 #define LEAPGESTURES_STATE_H
 enum states{
-    Begin,
-    Principal,
-    Free,
+    Begin, // When process begi
+    Principal, // when interacts with principal window(to select, create gestures among others)
+    Free, // when grab gestures to bind with commands
     sxhkd
 };
 extern enum states currentState;

@@ -42,6 +42,13 @@ OwnGestures::OwnGestures(VisualInterface *& interface) {
 //    bindMap[Free]["LiftUp"] = grabCommand("LiftUp");
 }
 
+void spawn(string cmd){
+    const char * cmd2 = cmd.c_str();
+    if( fork() == 0 ){
+        system(cmd2);
+    }
+}
+
 void OwnGestures::manageAccordingState(string gesture) {
     // Better solution might exist.
     cout << "Gesture is " << gesture << "and the command is" << bindMap[currentState][gesture] << "\n";
@@ -51,7 +58,7 @@ void OwnGestures::manageAccordingState(string gesture) {
     else {
         cout << "imhere\n";
         bindMap[Principal]["Chavo"] = getChavoCommand();
-        system((bindMap[currentState][gesture]).c_str());
+        spawn((bindMap[currentState][gesture]));
     }
 }
 

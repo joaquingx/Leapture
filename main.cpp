@@ -6,7 +6,6 @@
 #include "interface.h"
 #include "state.h"
 
-
 using namespace Leap;
 using namespace std;
 
@@ -26,14 +25,12 @@ int main(int argc, char** argv) {
     currentState = Principal;
     interface->player();
     states lastCurrent = currentState;
-    while(true){
-        if(lastCurrent != currentState){
-            cout << "I got it\n";
-        }
-        lastCurrent = currentState;
-    }
-
-
+ //    while(true){
+//        if(lastCurrent != currentState){
+//            cout << "I got it\n";
+//        }
+//        lastCurrent = currentState;
+//    }
     if (argc > 1 && strcmp(argv[1], "--bg") == 0)
         controller.setPolicy(Leap::Controller::POLICY_BACKGROUND_FRAMES);
 

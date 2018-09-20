@@ -25,6 +25,8 @@ ExampleWindow::ExampleWindow(std::string data)
   m_ButtonBox.set_layout(Gtk::BUTTONBOX_END);
   m_Button_Quit.signal_clicked().connect( sigc::mem_fun(*this,
               &ExampleWindow::on_button_quit) );
+  signal_key_press_event().connect(sigc::mem_fun(*this, &ExampleWindow::on_key_press), false);
+
 
   //Create the Tree model:
   m_refTreeModel = Gtk::ListStore::create(m_Columns);
@@ -32,55 +34,40 @@ ExampleWindow::ExampleWindow(std::string data)
 
   //Fill the TreeView's model
   Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-  row[m_Columns.m_col_id] = 1;
+  
+  
+//  Aqui puede ser un for para llenar mas datos
   row[m_Columns.m_col_name] = data;
-  row[m_Columns.m_col_number] = 10;
-  row[m_Columns.m_col_percentage] = 15;
+  row[m_Columns.m_description] = "this is a description";
+  /*
+  
+  // row = *(m_refTreeModel->append()); //para agregar mas
+  
+  */
 
-  // row = *(m_refTreeModel->append());
-  // row[m_Columns.m_col_id] = 2;
-  // row[m_Columns.m_col_name] = "Joey Jojo";
-  // row[m_Columns.m_col_number] = 20;
-  // row[m_Columns.m_col_percentage] = 40;
 
-  // row = *(m_refTreeModel->append());
-  // row[m_Columns.m_col_id] = 3;
-  // row[m_Columns.m_col_name] = "Rob McRoberts";
-  // row[m_Columns.m_col_number] = 30;
-  // row[m_Columns.m_col_percentage] = 70;
-
-  //Add the TreeView's view columns:
-  //This number will be shown with the default numeric formatting.
-  m_TreeView.append_column("ID", m_Columns.m_col_id);
   m_TreeView.append_column("Name", m_Columns.m_col_name);
+  m_TreeView.append_column("Description", m_Columns.m_description);
 
-  m_TreeView.append_column_numeric("Formatted number", m_Columns.m_col_number,
-          "%010d" /* 10 digits, using leading zeroes. */);
-
-  //Display a progress bar instead of a decimal number:
-  auto cell = Gtk::manage(new Gtk::CellRendererProgress);
-  int cols_count = m_TreeView.append_column("Some percentage", *cell);
-  auto pColumn = m_TreeView.get_column(cols_count - 1);
-  if(pColumn)
-  {
-    pColumn->add_attribute(cell->property_value(), m_Columns.m_col_percentage);
-  }
-
-  //Make all the columns reorderable:
-  //This is not necessary, but it's nice to show the feature.
-  //You can use TreeView::set_column_drag_function() to more
-  //finely control column drag and drop.
-  for(guint i = 0; i < 2; i++)
-  {
-    auto column = m_TreeView.get_column(i);
-    column->set_reorderable();
-  }
-
+  
   show_all_children();
 }
 
 ExampleWindow::~ExampleWindow()
 {
+}
+
+bool ExampleWindow::on_key_press(GdkEventKey* event)
+{
+    std::cout << event->keyval << ' ' << event->hardware_keycode << std::endl;
+
+
+    if (event->hardware_keycode == 36){//36 => enter
+      examplewindow = new ExampleWindow("otro");
+      examplewindow->show();
+        }
+
+    return false;
 }
 
 void ExampleWindow::on_button_quit()

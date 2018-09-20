@@ -12,6 +12,7 @@ public:
   
 protected:
   void on_button_quit();
+  bool on_key_press(GdkEventKey* event);
   //Signal handlers:
 
   //Tree model columns:
@@ -20,12 +21,11 @@ protected:
   public:
 
     ModelColumns()
-    { add(m_col_id); add(m_col_name); add(m_col_number); add(m_col_percentage);}
+    { add(m_col_name); add(m_description);}
 
-    Gtk::TreeModelColumn<unsigned int> m_col_id;
     Gtk::TreeModelColumn<Glib::ustring> m_col_name;
-    Gtk::TreeModelColumn<short> m_col_number;
-    Gtk::TreeModelColumn<int> m_col_percentage;
+    Gtk::TreeModelColumn<std::string> m_description;
+
   };
 
   ModelColumns m_Columns;
@@ -39,6 +39,7 @@ protected:
 
   Gtk::ButtonBox m_ButtonBox;
   Gtk::Button m_Button_Quit;
+  ExampleWindow* examplewindow; 
 
 
 };

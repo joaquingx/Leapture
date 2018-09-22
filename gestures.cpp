@@ -27,7 +27,7 @@ string OwnGestures::getChavoCommand() {
 
 void OwnGestures::grabCommand(const gchar *gesture) {
     currentState = Principal;
-    thread t1(&VisualInterface::createGesture,this->interface,gesture);
+    thread t1(&VisualInterface::createGesture,this->interface,gesture); // must be deleted
     t1.detach();
 }
 
@@ -40,6 +40,21 @@ OwnGestures::OwnGestures(VisualInterface *& interface) {
     //    bindMap[Free]["Fist"] = grabCommand("Fist");
 //    bindMap[Free]["Chavo"] = grabCommand("Chavo");
 //    bindMap[Free]["LiftUp"] = grabCommand("LiftUp");
+}
+
+void readFile(const char * config_file){
+//    PRINTF("load configuration '%s'\n", config_file);
+    FILE *cfg = fopen(config_file, "r");
+    if (cfg == NULL)
+        cout << "Doesn't Exist File\n";
+    const int MAXLEN = 200;
+
+    char buf[3 * MAXLEN];
+    char first;
+    while (fgets(buf, sizeof(buf), cfg) != NULL) {
+        printf("linea: %s\n", buf);
+    }
+    fclose(cfg);
 }
 
 void spawn(string cmd){

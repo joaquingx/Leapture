@@ -10,7 +10,7 @@ project(LeapGestures)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall")
 
-add_executable(leapObject main.cpp gestures.h gestures.cpp listener.h listener.cpp debug.cpp interface.h interface.cpp state.h state.cpp)
+add_executable(leapObject main.cpp gestures.h gestures.cpp listener.h listener.cpp debug.cpp interface.h interface.cpp state.h state.cpp inter.cpp inter.h)
 find_library(LEAP_LIBRARY NAMES libLeap.so)
 
 #GTK3 Directives
@@ -22,4 +22,11 @@ LINK_DIRECTORIES(${GTK3_LIBRARY_DIRS})
 # Add other flags to the compiler
 ADD_DEFINITIONS(${GTK3_CFLAGS_OTHER})
 
-target_link_libraries(leapObject ${LEAP_LIBRARY} ${GTK3_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+
+#GTKMM
+pkg_check_modules(GTKMM gtkmm-3.0)
+link_directories(${GTKMM_LIBRARY_DIRS})
+include_directories(${GTKMM_INCLUDE_DIRS})
+
+
+target_link_libraries(leapObject ${LEAP_LIBRARY} ${GTK3_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${GTKMM_LIBRARIES})

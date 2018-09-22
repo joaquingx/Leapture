@@ -5,7 +5,6 @@
 #include <string>
 using namespace std;
 
-
 class VisualInterface{
     enum {
 

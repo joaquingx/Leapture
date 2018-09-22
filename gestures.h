@@ -14,6 +14,9 @@
 
 using namespace std;
 
+
+void readFile(const char * config_file);
+
 class OwnGestures{
 private:
     // e.g. bindMap[Begin]["Fist"] = "oneko" means that with fist, in begin state we'll exec an oneko

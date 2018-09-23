@@ -26,7 +26,7 @@ private:
     bool checkFist(Leap::Frame frame);
     bool getExtendedFingers(Leap::FingerList fl);
     bool checkLiftUp(Leap::Frame frame);
-    bool checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller);
+    int checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller);
     bool checkKeyTap(Leap::Gesture gesture);
     void manageAccordingState(string gesture);
     string getChavoCommand();

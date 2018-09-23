@@ -14,7 +14,7 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
-    VisInterface * itfc = new VisInterface(argc,argv);
+    VisInterface * itfc = new VisInterface(1,argv);
 
 
     Leap::Controller controller;

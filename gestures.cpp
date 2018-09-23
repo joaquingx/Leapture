@@ -32,27 +32,16 @@ string OwnGestures::getChavoCommand() {
     return toDo;
 }
 
-void OwnGestures::grabCommand(const gchar *gesture) {
-    currentState = Principal;
-//    thread t1(&VisualInterface::createGesture,this->interface,gesture); // must be deleted
-//    t1.detach();
-}
-
 OwnGestures::OwnGestures(VisInterface *& interface) {
     bindMap.resize(STATES);
     bindMap[Begin]["Fist"] = bindMap[Principal]["Fist"]  = bindMap[Binder]["Fist"] = "xdotool mousemove 1000  1000 click 1";
     bindMap[Begin]["Chavo"] = bindMap[Principal]["Chavo"] = bindMap[Binder]["Chavo"] = "~ setNavigation";
-    bindMap[Free]["Fist"] = bindMap[Free]["Chavo"] = bindMap[Free]["LiftUp"] = "~ setClick";
-//    bindMap[Principal][""]
-//    bindMap[Principal]["Fist"] = "xdotool key Return";
+    bindMap[Free]["Fist"] = bindMap[Free]["Chavo"] = bindMap[Free]["LiftUp"] = bindMap[Free]["Swipe"] =
+            "xdotool mousemove 1000  1000 click 1";
     this->interface = interface;
-    //    bindMap[Free]["Fist"] = grabCommand("Fist");
-//    bindMap[Free]["Chavo"] = grabCommand("Chavo");
-//    bindMap[Free]["LiftUp"] = grabCommand("LiftUp");
 }
 
 void readFile(const char * config_file){
-//    PRINTF("load configuration '%s'\n", config_file);
     FILE *cfg = fopen(config_file, "r");
     if (cfg == NULL)
         cout << "Doesn't Exist File\n";
@@ -78,7 +67,7 @@ void OwnGestures::manageAccordingState(string gesture) {
     cout << "Gesture is " << gesture << "and the command is" << bindMap[currentState][gesture] << "\n";
     if(currentState != Binder)
         interface->setGesture(gesture);
-    // Functions instead functions:
+    // Functions instead commands begin with ~:
     if(bindMap[currentState][gesture][0] == '~'){
 
         if(bindMap[currentState][gesture] == "~ setClick"){
@@ -89,9 +78,6 @@ void OwnGestures::manageAccordingState(string gesture) {
         }
     }
 
-    else if(currentState == Free) {
-        grabCommand(gesture.c_str());
-    }
     else {
         spawn((bindMap[currentState][gesture]));
     }
@@ -104,6 +90,7 @@ void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) 
 //    cout << "frametimestamp:" << frame.timestamp() << " mintimestamp:"<< minTimeStamp << "\n";
     int64_t extra = 0;
     if(frame.timestamp() > minTimeStamp){
+        int predef = checkPredefinedGestures(frame, controller);
         if(checkFist(frame)){
             extra += 400000;
             anyoneActivated=true;
@@ -113,9 +100,16 @@ void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) 
             anyoneActivated=true;
             manageAccordingState("LiftUp");
         }
-        else if(checkPredefinedGestures(frame, controller)){
-            anyoneActivated=true;
-            manageAccordingState("Chavo");
+        else if(predef){
+            if(predef == 1){
+                anyoneActivated=true;
+                manageAccordingState("Swipe");
+            }
+            else if(predef == 2){
+                anyoneActivated=true;
+                manageAccordingState("Chavo");
+            }
+
         }
         if(anyoneActivated){// minimium time between gestures binding
             minTimeStamp = frame.timestamp() + 400000 + extra;
@@ -174,10 +168,10 @@ bool OwnGestures::checkLiftUp(Leap::Frame frame) {
 
 
 
-bool OwnGestures::checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller) {
+int OwnGestures::checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller) {
     const std::string stateNames[] = {"STATE_INVALID", "STATE_START", "STATE_UPDATE", "STATE_END"};
     const Leap::GestureList gestures = frame.gestures();
-    bool isActivated=false;
+    int isActivated=0;
     for (int g = 0; g < gestures.count(); ++g) {
         Leap::Gesture gesture = gestures[g];
 
@@ -216,11 +210,12 @@ bool OwnGestures::checkPredefinedGestures(Leap::Frame frame, Leap::Controller co
                           << ", state: " << stateNames[gesture.state()]
                           << ", direction: " << swipe.direction()
                           << ", speed: " << swipe.speed() << std::endl;
+                isActivated = 1;
                 break;
             }
             case Leap::Gesture::TYPE_KEY_TAP:
             {
-                isActivated = checkKeyTap(gesture);
+                isActivated = 2;
                 break;
             }
             case Leap::Gesture::TYPE_SCREEN_TAP:

@@ -30,3 +30,7 @@ bool VisInterface::setGesture(string gesture) {
     wellcome->setGesture(gesture);
     return true;
 }
+
+VisInterface::~VisInterface() {
+//    app->main
+}

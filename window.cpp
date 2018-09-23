@@ -138,9 +138,13 @@ void window::on_button_clicked() {
         string selected = getSelected();
         if(selected == "Create Gesture"){
             currentState = Free;
-            cleanBox();
-            this->m_button = new Gtk::Button();
-            m_button->signal_clicked().connect( sigc::mem_fun(*this,&window::on_button_clicked) );
+            data.clear();
+            data.push_back("Waiting for Gesture");
+            secondDisplay(data);
+//            cleanBox();
+//            this->m_button = new Gtk::Button();
+//            m_button->signal_clicked().connect( sigc::mem_fun(*this,&window::on_button_clicked) );
+//            show_all_children();
         }
         else if(selected == "Use Application"){
             currentState = sxhkd;

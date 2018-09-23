@@ -5,15 +5,21 @@
 #include "state.h"
 #include "interface.h"
 #include "thread"
-#define STATES 4
+#define STATES 20
 #define NITEMS 5
 using namespace std;
 
 int cnt=0,cMode=0;
 string toDo;
+
+
 string OwnGestures::getChavoCommand() {
-    if(currentState == Principal){
-        if(!(cnt%NITEMS))
+//    if(interface->getDataSize()
+    cout << "que es esto:" << interface->getDataSize() << "\n";
+    cout << cnt << "<->" << cMode << "\n";
+    int siz = interface->getDataSize() - 1;
+    if(currentState == Begin or currentState == Principal or currentState == Binder){
+        if(!(cnt%siz))
         {
             if(!(cMode % 2))
                 toDo = "xdotool key Down", cMode++;
@@ -22,20 +28,23 @@ string OwnGestures::getChavoCommand() {
         }
         ++cnt;
     }
+    system(toDo.c_str());
     return toDo;
 }
 
 void OwnGestures::grabCommand(const gchar *gesture) {
     currentState = Principal;
-    thread t1(&VisualInterface::createGesture,this->interface,gesture); // must be deleted
-    t1.detach();
+//    thread t1(&VisualInterface::createGesture,this->interface,gesture); // must be deleted
+//    t1.detach();
 }
 
-OwnGestures::OwnGestures(VisualInterface *& interface) {
+OwnGestures::OwnGestures(VisInterface *& interface) {
     bindMap.resize(STATES);
-    bindMap[Begin]["Fist"] = "xdotool key super+w";
-    bindMap[Begin]["Chavo"] = "";
-    bindMap[Principal]["Fist"] = "xdotool key Return";
+    bindMap[Begin]["Fist"] = bindMap[Principal]["Fist"]  = bindMap[Binder]["Fist"] = "~ setClick";
+    bindMap[Begin]["Chavo"] = bindMap[Principal]["Chavo"] = bindMap[Binder]["Chavo"] = "~ setNavigation";
+    bindMap[Free]["Fist"] = bindMap[Free]["Chavo"] = bindMap[Free]["LiftUp"] = "~ setClick";
+//    bindMap[Principal][""]
+//    bindMap[Principal]["Fist"] = "xdotool key Return";
     this->interface = interface;
     //    bindMap[Free]["Fist"] = grabCommand("Fist");
 //    bindMap[Free]["Chavo"] = grabCommand("Chavo");
@@ -67,12 +76,23 @@ void spawn(string cmd){
 void OwnGestures::manageAccordingState(string gesture) {
     // Better solution might exist.
     cout << "Gesture is " << gesture << "and the command is" << bindMap[currentState][gesture] << "\n";
-    if(currentState == Free) {
+    if(currentState != Binder)
+        interface->setGesture(gesture);
+    // Functions instead functions:
+    if(bindMap[currentState][gesture][0] == '~'){
+
+        if(bindMap[currentState][gesture] == "~ setClick"){
+            interface->setClick();
+        }
+        else if(bindMap[currentState][gesture] == "~ setNavigation"){
+            getChavoCommand();
+        }
+    }
+
+    else if(currentState == Free) {
         grabCommand(gesture.c_str());
     }
     else {
-        cout << "imhere\n";
-        bindMap[Principal]["Chavo"] = getChavoCommand();
         spawn((bindMap[currentState][gesture]));
     }
 }

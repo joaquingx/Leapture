@@ -9,12 +9,13 @@
 #include <Leap.h>
 #include "interface.h"
 #include "gestures.h"
+#include "inter.h"
 
 class BaseListener : public Leap::Listener {
 public:
-    VisualInterface * interface;
+    VisInterface * interface;
     OwnGestures * Og;
-    explicit BaseListener(VisualInterface *& interface);
+    explicit BaseListener(VisInterface *& interface);
     virtual void onInit(const Leap::Controller&);
     virtual void onConnect(const Leap::Controller&);
     virtual void onDisconnect(const Leap::Controller&);

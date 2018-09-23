@@ -5,3 +5,4 @@
 #include "state.h"
 
 enum states currentState = Begin;
+vector< map<string,string> > bindMap;

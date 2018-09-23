@@ -68,7 +68,7 @@ void BaseListener::onFrame(const Leap::Controller& controller) {
     Og->checkGestures(frame, controller);
 }
 
-BaseListener::BaseListener(VisualInterface *&interface) {
+BaseListener::BaseListener(VisInterface *& interface) {
     this->interface = interface;
     Og = new OwnGestures(interface);
 }

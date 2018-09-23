@@ -11,6 +11,7 @@
 #include <vector>
 #include "state.h"
 #include "interface.h"
+#include "inter.h"
 
 using namespace std;
 
@@ -21,8 +22,7 @@ class OwnGestures{
 private:
     // e.g. bindMap[Begin]["Fist"] = "oneko" means that with fist, in begin state we'll exec an oneko
     int64_t minTimeStamp = 0;
-    vector< map<string,string> > bindMap;
-    VisualInterface *interface;
+    VisInterface *interface;
     bool checkFist(Leap::Frame frame);
     bool getExtendedFingers(Leap::FingerList fl);
     bool checkLiftUp(Leap::Frame frame);
@@ -32,7 +32,7 @@ private:
     string getChavoCommand();
     void grabCommand(const char *gesture);
 public:
-    OwnGestures(VisualInterface *& interface);
+    OwnGestures(VisInterface *& interface);
     void checkGestures(Leap::Frame frame, Leap::Controller controller);
 };
 

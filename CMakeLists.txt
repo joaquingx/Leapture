@@ -10,7 +10,7 @@ project(LeapGestures)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall")
 
-add_executable(leapObject main.cpp gestures.h gestures.cpp listener.h listener.cpp debug.cpp interface.h interface.cpp state.h state.cpp inter.cpp inter.h)
+add_executable(leapObject main.cpp gestures.h gestures.cpp listener.h listener.cpp debug.cpp interface.h interface.cpp state.h state.cpp window.cpp window.h inter.cpp inter.h)
 find_library(LEAP_LIBRARY NAMES libLeap.so)
 
 #GTK3 Directives

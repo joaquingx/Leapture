@@ -39,13 +39,14 @@ public:
     string getSelected();
     //Signal handlers:
     bool cleanBox();
+    bool hideBox();
 //protected:
     void on_button_clicked();
     void on_changed(vector<string> data);
     //Member widgets:
     Gtk::Box m_VBox;
     Gtk::Entry m_entry;
-    Gtk::Button m_button;
+    Gtk::Button * m_button;
     Gtk::Image m_image;
     Gtk::Grid m_grid;
 

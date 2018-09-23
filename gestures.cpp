@@ -40,7 +40,7 @@ void OwnGestures::grabCommand(const gchar *gesture) {
 
 OwnGestures::OwnGestures(VisInterface *& interface) {
     bindMap.resize(STATES);
-    bindMap[Begin]["Fist"] = bindMap[Principal]["Fist"]  = bindMap[Binder]["Fist"] = "~ setClick";
+    bindMap[Begin]["Fist"] = bindMap[Principal]["Fist"]  = bindMap[Binder]["Fist"] = "xdotool mousemove 1000  1000 click 1";
     bindMap[Begin]["Chavo"] = bindMap[Principal]["Chavo"] = bindMap[Binder]["Chavo"] = "~ setNavigation";
     bindMap[Free]["Fist"] = bindMap[Free]["Chavo"] = bindMap[Free]["LiftUp"] = "~ setClick";
 //    bindMap[Principal][""]
@@ -105,7 +105,7 @@ void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) 
     int64_t extra = 0;
     if(frame.timestamp() > minTimeStamp){
         if(checkFist(frame)){
-            extra += 200000;
+            extra += 400000;
             anyoneActivated=true;
             manageAccordingState("Fist");
         }

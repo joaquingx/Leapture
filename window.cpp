@@ -14,6 +14,7 @@ window::window(){
 
 void window::initialDisplay() {
     cleanBox(); // works??
+//    hide();
     this->set_border_width(10);
 
     // Load and display the image
@@ -21,10 +22,10 @@ void window::initialDisplay() {
     m_grid.attach(m_image,10,10,1,1);
 
     // Add the Quit button
-    m_button.add_label("Open");
-    m_button.signal_clicked().connect(sigc::mem_fun(*this,&window::on_button_clicked));
+    m_button->add_label("Open");
+    m_button->signal_clicked().connect(sigc::mem_fun(*this,&window::on_button_clicked));
 
-    m_grid.attach(m_button,0,2,1,1);
+    m_grid.attach((*m_button),0,2,1,1);
 
     // Display the main grid in the main window
     m_grid.show_all();
@@ -37,9 +38,11 @@ void window::initialDisplay() {
 
 void window::secondDisplay(vector<string> data) {
     cleanBox();
+//    hide();
 //    add(m_grid);
     m_VBox = Gtk::Box(Gtk::ORIENTATION_VERTICAL);
-    m_button = Gtk::Button("Thanos Fist");
+    delete(m_button);
+    m_button =  new Gtk::Button("Thanos Fist");
 //    m_Button_Quit = Gtk::Button("Quit");
     set_title("Gtk::List View");
     set_border_width(5);
@@ -55,12 +58,13 @@ void window::secondDisplay(vector<string> data) {
     m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
 
     m_VBox.pack_start(m_ScrolledWindow);
-    m_VBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
+    m_VBox.pack_start((*m_button), Gtk::PACK_SHRINK);
+//    m_VBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
 
-    m_ButtonBox.pack_start(m_button, Gtk::PACK_SHRINK);
-    m_ButtonBox.set_border_width(5);
-    m_ButtonBox.set_layout(Gtk::BUTTONBOX_END);
-    m_button.signal_clicked().connect( sigc::mem_fun(*this,&window::on_button_clicked) );
+//    m_ButtonBox.pack_start((*m_button), Gtk::PACK_SHRINK);
+//    m_ButtonBox.set_border_width(5);
+//    m_ButtonBox.set_layout(Gtk::BUTTONBOX_END);
+    m_button->signal_clicked().connect( sigc::mem_fun(*this,&window::on_button_clicked) );
 //    signal_key_press_event().connect(sigc::mem_fun(*this, &ListView::on_key_press), false);
 
     //Create the Tree model:
@@ -87,17 +91,21 @@ void window::secondDisplay(vector<string> data) {
 bool window::cleanBox() {
 //    this->m_VBox = new GTK:
     remove();
+////    hide();
+//    this->m_grid.hide();
+//    this->m_button.hide();
+//    this->m_VBox.hide();
     this->m_VBox = Gtk::Box(Gtk::ORIENTATION_VERTICAL);
     this->m_grid = Gtk::Grid();
     this->m_ScrolledWindow = Gtk::ScrolledWindow();
     this->m_refTreeModel = Glib::RefPtr<Gtk::ListStore>();
     this->m_TreeView = Gtk::TreeView();
-    this->m_button = Gtk::Button();
+    this->m_button = new Gtk::Button();
     this->m_ButtonBox = Gtk::ButtonBox();
 }
 
 window::~window() {
-
+//    hide()
 }
 
 void window::on_button_clicked() {
@@ -114,7 +122,6 @@ void window::on_button_clicked() {
         this->secondDisplay(data);
     }
 
-
     if(currentState == Free){
         cout << "Clickeaste papurri\n" << gesture << "\n";
         data.clear();
@@ -127,7 +134,22 @@ void window::on_button_clicked() {
         this->secondDisplay(data);
         currentState = Binder;
     }
+    if(currentState == Principal){
+        string selected = getSelected();
+        if(selected == "Create Gesture"){
+            currentState = Free;
+            cleanBox();
+            this->m_button = new Gtk::Button();
+            m_button->signal_clicked().connect( sigc::mem_fun(*this,&window::on_button_clicked) );
+        }
+        else if(selected == "Use Application"){
+            currentState = sxhkd;
+            remove();
+        }
+//        cout << "Hace tiempo que no te veo!:" << getSelected() << "\n";
+    }
     if(currentState == Begin) {
+        cout << "veretera\n";
         data.clear();
         data.push_back("Create Gesture");
         data.push_back("Use Application");
@@ -137,20 +159,6 @@ void window::on_button_clicked() {
         this->secondDisplay(data);
     }
 
-    if(currentState == Principal){
-        string selected = getSelected();
-        if(selected == "Create Gesture"){
-            currentState = Free;
-            cleanBox();
-            this->m_button = Gtk::Button();
-            m_button.signal_clicked().connect( sigc::mem_fun(*this,&window::on_button_clicked) );
-        }
-        else if(selected == "Use Application"){
-            currentState = sxhkd;
-            remove();
-        }
-//        cout << "Hace tiempo que no te veo!:" << getSelected() << "\n";
-    }
 
 }
 
@@ -164,6 +172,10 @@ string window::getSelected() {
 
 void window::setGesture(string gesture) {
     this->gesture =gesture;
+}
+
+bool window::hideBox() {
+    hide();
 }
 
 

@@ -1,3 +1,0 @@
-/home/joaquin/Repos/LeapMotion/interface-gtk/CMakeFiles/rebuild_cache.dir
-/home/joaquin/Repos/LeapMotion/interface-gtk/CMakeFiles/window.dir
-/home/joaquin/Repos/LeapMotion/interface-gtk/CMakeFiles/edit_cache.dir

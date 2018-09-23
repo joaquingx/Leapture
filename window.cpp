@@ -109,6 +109,15 @@ window::~window() {
 }
 
 void window::on_button_clicked() {
+    if(currentState == sxhkd ) {
+        data.clear();
+        data.push_back("Create Gesture");
+        data.push_back("Use Application");
+        data.push_back("Dummy Data");
+        data.push_back("Dummy Data");
+        currentState = Principal;
+        this->secondDisplay(data);
+    }
     if(currentState == Binder){
         string selected = getSelected();
         cout << gesture << " is vinculated with " <<  selected << "\n";
@@ -148,7 +157,9 @@ void window::on_button_clicked() {
         }
         else if(selected == "Use Application"){
             currentState = sxhkd;
-            remove();
+            data.clear();
+            data.push_back("Waiting for Gesture");
+            secondDisplay(data);
         }
 //        cout << "Hace tiempo que no te veo!:" << getSelected() << "\n";
     }

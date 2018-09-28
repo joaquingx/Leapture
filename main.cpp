@@ -25,6 +25,7 @@ int main(int argc, char** argv) {
 
     itfc->runInterface();
 
+
     if (argc > 1 && strcmp(argv[1], "--bg") == 0)
         controller.setPolicy(Leap::Controller::POLICY_BACKGROUND_FRAMES);
 

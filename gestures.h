@@ -24,7 +24,10 @@ private:
     int64_t minTimeStamp = 0;
     VisInterface *interface;
     bool checkFist(Leap::Frame frame);
-    bool getExtendedFingers(Leap::FingerList fl);
+    bool checkDoubleFist(Leap::Frame frame);
+    bool checkLeftLiftUp(Leap::Frame frame);
+    bool checkModoDiablo(Leap::Frame frame);
+    bool getExtendedFingers(Leap::FingerList fl, int num);
     bool checkLiftUp(Leap::Frame frame);
     int checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller);
     bool checkKeyTap(Leap::Gesture gesture);

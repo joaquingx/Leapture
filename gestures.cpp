@@ -36,7 +36,8 @@ OwnGestures::OwnGestures(VisInterface *& interface) {
     bindMap.resize(STATES);
     bindMap[Begin]["Fist"] = bindMap[Principal]["Fist"]  = bindMap[Binder]["Fist"] = "xdotool mousemove 1000  1000 click 1";
     bindMap[Begin]["Chavo"] = bindMap[Principal]["Chavo"] = bindMap[Binder]["Chavo"] = "~ setNavigation";
-    bindMap[Free]["Fist"] = bindMap[Free]["Chavo"] = bindMap[Free]["LiftUp"] = bindMap[Free]["Swipe"] =
+    bindMap[Free]["Fist"] = bindMap[Free]["Chavo"] = bindMap[Free]["LiftUp"] = bindMap[Free]["Swipe"] = bindMap[Free]["Double-Fist"] =
+            bindMap[Free]["ModoDiablo"] = bindMap[Free]["Left-LiftUp"] =
             "xdotool mousemove 1000  1000 click 1";
     this->interface = interface;
 }
@@ -56,6 +57,7 @@ void readFile(const char * config_file){
 }
 
 void spawn(string cmd){
+    cmd = cmd + " 2>&1 >/dev/null";
     const char * cmd2 = cmd.c_str();
     if( fork() == 0 ){
         system(cmd2);
@@ -83,13 +85,16 @@ void OwnGestures::manageAccordingState(string gesture) {
     }
 }
 
+
 void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) {
     bool anyoneActivated=false;
 //    cout << "Don't give up\n";
 //    cout << currentState << "\n";
 //    cout << "frametimestamp:" << frame.timestamp() << " mintimestamp:"<< minTimeStamp << "\n";
+
     int64_t extra = 0;
     if(frame.timestamp() > minTimeStamp){
+//        cout <<"Confidence: "  << frame.hands().leftmost().confidence() << "\n";
         int predef = checkPredefinedGestures(frame, controller);
         if(checkFist(frame)){
             extra += 400000;
@@ -99,6 +104,19 @@ void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) 
         else if(checkLiftUp(frame)){
             anyoneActivated=true;
             manageAccordingState("LiftUp");
+        }
+        else if(checkDoubleFist(frame)){
+            anyoneActivated=true;
+            manageAccordingState("Double-Fist");
+        }
+        else if(checkLeftLiftUp(frame)){
+            anyoneActivated=true;
+            manageAccordingState("Left-LiftUp");
+        }
+        else if(checkModoDiablo(frame)){
+            extra += 400000;
+            anyoneActivated=true;
+            manageAccordingState("ModoDiablo");
         }
         else if(predef){
             if(predef == 1){
@@ -110,42 +128,48 @@ void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) 
                 anyoneActivated=true;
                 manageAccordingState("Chavo");
             }
-
         }
         if(anyoneActivated){// minimium time between gestures binding
             minTimeStamp = frame.timestamp() + 400000 + extra;
         }
     }
 }
-bool OwnGestures::getExtendedFingers(Leap::FingerList fl) {
-    return (fl.extended().count() == 0);
+bool OwnGestures::getExtendedFingers(Leap::FingerList fl, int num) {
+    return (fl.extended().count() == num);
 }
 
 bool OwnGestures::checkFist(Leap::Frame frame) {
     Leap::HandList hands = frame.hands();
-    for(Leap::HandList::const_iterator hl = hands.begin() ; hl!= hands.end(); ++hl){
-        const Leap::Hand hand = *hl;
-        Leap::FingerList fl = hand.fingers();
-        float sum = 0;
-        float minValue = 0.7;
-        const Leap::FingerList fingers = hand.fingers();
-        for (Leap::FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); ++fl) {
-            const Leap::Finger finger = *fl;
-            Leap::Vector bonesDirs[3];
-            for(int j = 0 ; j < 3 ; ++j){
-                Leap::Bone::Type boneType = static_cast<Leap::Bone::Type>(j);
-                Leap::Bone bone = finger.bone(boneType);
-                bonesDirs[j]= bone.direction();
+//    cout << "There are " << hands.count() << "hands\n";
+    if(hands.count() == 1) {
+        for (Leap::HandList::const_iterator hl = hands.begin(); hl != hands.end(); ++hl) {
+            const Leap::Hand hand = *hl;
+            Leap::FingerList fl = hand.fingers();
+            float sum = 0;
+            float minValue = 0.7;
+            const Leap::FingerList fingers = hand.fingers();
+            for (Leap::FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); ++fl) {
+                const Leap::Finger finger = *fl;
+                Leap::Vector bonesDirs[3];
+                for (int j = 0; j < 3; ++j) {
+                    Leap::Bone::Type boneType = static_cast<Leap::Bone::Type>(j);
+                    Leap::Bone bone = finger.bone(boneType);
+                    bonesDirs[j] = bone.direction();
+                }
+                sum += bonesDirs[0].dot(bonesDirs[1]);
+                sum += bonesDirs[1].dot(bonesDirs[2]);
             }
-            sum += bonesDirs[0].dot(bonesDirs[1]);
-            sum += bonesDirs[1].dot(bonesDirs[2]);
-        }
-        sum /= 10;
-        if(sum <= minValue && getExtendedFingers(fl)){
-            return true;
+            sum /= 10;
+            if (sum <= minValue && getExtendedFingers(fl,0)) {
+                return true;
+            }
         }
     }
+    return false;
 }
+
+
+
 
 bool OwnGestures::checkLiftUp(Leap::Frame frame) {
     int numberHands = frame.hands().count();
@@ -159,6 +183,10 @@ bool OwnGestures::checkLiftUp(Leap::Frame frame) {
         palmVelocities[cnt] = hand.palmVelocity();
         ++cnt;
     }
+//    cout << "Left Palm normal: " << palmNormals[0].roll() << "\n";
+//    cout << "Right Palm normal: " << palmNormals[1].roll() << "\n";
+//    cout << "Hand 1 normal:" << palmNormals[0].x << "\n" << palmNormals[0].y << "\n" << palmNormals[0].z << "\n";
+//    cout << "Hand 2 normal:" << palmNormals[1].x << "\n" << palmNormals[1].y << "\n" << palmNormals[1].z << "\n";
     if ((numberHands == 2) &&
         (palmNormals[0].roll() < 0.0f) && (palmNormals[1].roll() < 0.0f) &&
         (palmVelocities[0].z > 50.0f) && (palmVelocities[1].z > 50.0f) &&
@@ -166,7 +194,6 @@ bool OwnGestures::checkLiftUp(Leap::Frame frame) {
         return true;
     }
 }
-
 
 
 int OwnGestures::checkPredefinedGestures(Leap::Frame frame, Leap::Controller controller) {
@@ -246,6 +273,90 @@ bool OwnGestures::checkKeyTap(Leap::Gesture gesture) {
               << ", direction: " << tap.direction()<< std::endl;
     return 1;
 
+}
+
+bool OwnGestures::checkDoubleFist(Leap::Frame frame) {
+    Leap::HandList hands = frame.hands();
+    bool handActivated = true;
+    if(hands.count() == 2) {
+        for (Leap::HandList::const_iterator hl = hands.begin(); hl != hands.end(); ++hl) {
+            const Leap::Hand hand = *hl;
+            Leap::FingerList fl = hand.fingers();
+            float sum = 0;
+            float minValue = 0.7;
+            const Leap::FingerList fingers = hand.fingers();
+            for (Leap::FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); ++fl) {
+                const Leap::Finger finger = *fl;
+                Leap::Vector bonesDirs[3];
+                for (int j = 0; j < 3; ++j) {
+                    Leap::Bone::Type boneType = static_cast<Leap::Bone::Type>(j);
+                    Leap::Bone bone = finger.bone(boneType);
+                    bonesDirs[j] = bone.direction();
+                }
+                sum += bonesDirs[0].dot(bonesDirs[1]);
+                sum += bonesDirs[1].dot(bonesDirs[2]);
+            }
+            sum /= 10;
+            if (sum > minValue or !getExtendedFingers(fl,0)) {
+                handActivated=false;
+            }
+        }
+    }
+    else{
+        handActivated=false;
+    }
+    return handActivated;
+}
+
+
+bool OwnGestures::checkLeftLiftUp(Leap::Frame frame) {
+    int numberHands = frame.hands().count();
+    Leap::Hand leftHand = frame.hands().leftmost();
+//    if(leftHand.isRight()) {
+        Leap::Vector palmNormal;
+        Leap::Vector palmVelocity;
+    palmNormal = leftHand.palmNormal();
+        palmVelocity = leftHand.palmVelocity();
+//    cout << palmNormal.roll() << "\n";
+        if ((numberHands == 1) && (palmVelocity.x < 30.0f) && (palmNormal.roll() > -0.8f) &&
+            (palmNormal.roll() < 0.7f) && (palmVelocity.z > 50.0f) && (palmVelocity.z < 500.0f)) {
+            return true;
+        }
+//    }
+    return false;
+}
+
+bool OwnGestures::checkModoDiablo(Leap::Frame frame) {
+    Leap::HandList hands = frame.hands();
+//    cout << "There are " << hands.count() << "hands\n";
+    if(hands.count() == 1) {
+        for (Leap::HandList::const_iterator hl = hands.begin(); hl != hands.end(); ++hl) {
+            const Leap::Hand hand = *hl;
+            Leap::FingerList fl = hand.fingers();
+            float sum = 0;
+            float minValue = 0.7;
+            const Leap::FingerList fingers = hand.fingers();
+            for (Leap::FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); ++fl) {
+                const Leap::Finger finger = *fl;
+                // just middle, ring, pinky(to overcome errors)
+                if (finger.type() >= 2 and finger.type() <= 3) {
+                    Leap::Vector bonesDirs[3];
+                    for (int j = 0; j < 3; ++j) {
+                        Leap::Bone::Type boneType = static_cast<Leap::Bone::Type>(j);
+                        Leap::Bone bone = finger.bone(boneType);
+                        bonesDirs[j] = bone.direction();
+                    }
+                    sum += bonesDirs[0].dot(bonesDirs[1]);
+                    sum += bonesDirs[1].dot(bonesDirs[2]);
+                }
+            }
+            sum /= 4;
+            if (sum <= minValue && (getExtendedFingers(fl,2) || getExtendedFingers(fl,3)) ) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 

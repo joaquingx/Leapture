@@ -12,7 +12,6 @@ const std::string boneNames[] = {"Metacarpal", "Proximal", "Middle", "Distal"};
 
 
 
-
 // *****************************Pedefined Shit*************************************
 // This method MUST exist!!!!(Constructor)
 void BaseListener::onInit(const Leap::Controller& controller) {
@@ -22,7 +21,7 @@ void BaseListener::onInit(const Leap::Controller& controller) {
 void BaseListener::onConnect(const Leap::Controller& controller) {
     std::cout << "Hardware and Software Connected!!!" << std::endl;
     controller.enableGesture(Leap::Gesture::TYPE_KEY_TAP);
-    controller.enableGesture(Leap::Gesture::TYPE_SCREEN_TAP);
+//    controller.enableGesture(Leap::Gesture::TYPE_SCREEN_TAP);
     controller.enableGesture(Leap::Gesture::TYPE_SWIPE);
 }
 

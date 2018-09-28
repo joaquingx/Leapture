@@ -142,6 +142,7 @@ void window::on_button_clicked() {
         data.push_back("bspc desktop -f prev");
         data.push_back("termite");
         data.push_back("xdotool key Super+w");
+        data.push_back("ffplay -nodisp /home/joaquin/Downloads/Duki-Rockstar.mp3");
         this->secondDisplay(data);
         currentState = Binder;
     }

@@ -106,6 +106,7 @@ void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) 
                 manageAccordingState("Swipe");
             }
             else if(predef == 2){
+                extra -= 300000;
                 anyoneActivated=true;
                 manageAccordingState("Chavo");
             }

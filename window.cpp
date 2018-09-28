@@ -140,6 +140,8 @@ void window::on_button_clicked() {
         data.push_back("google-chrome-stable");
         data.push_back("emacs");
         data.push_back("bspc desktop -f prev");
+        data.push_back("termite");
+        data.push_back("xdotool key Super+w");
         this->secondDisplay(data);
         currentState = Binder;
     }

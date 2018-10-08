@@ -77,12 +77,12 @@ void window::secondDisplay(vector<string> data) {
     for(int i = 0 ;i < data.size() ; ++i){
         row = *(m_refTreeModel->append());
         row[m_Columns.m_col_name] = data[i];
-        row[m_Columns.m_description] = "this is a description";
+        row[m_Columns.m_description] = "";
     }
 
 
-    m_TreeView.append_column("Name", m_Columns.m_col_name);
-    m_TreeView.append_column("Description", m_Columns.m_description);
+    m_TreeView.append_column("", m_Columns.m_col_name);
+    m_TreeView.append_column("", m_Columns.m_description);
 
     show_all_children();
 }
@@ -111,10 +111,8 @@ window::~window() {
 void window::on_button_clicked() {
     if(currentState == sxhkd ) {
         data.clear();
-        data.push_back("Create Gesture");
+        data.push_back("Bind Gesture with Command");
         data.push_back("Use Application");
-        data.push_back("Dummy Data");
-        data.push_back("Dummy Data");
         currentState = Principal;
         this->secondDisplay(data);
     }
@@ -123,10 +121,8 @@ void window::on_button_clicked() {
         cout << gesture << " is vinculated with " <<  selected << "\n";
         bindMap[sxhkd][gesture] = selected;
         data.clear();
-        data.push_back("Create Gesture");
+        data.push_back("Bind Gesture with Command");
         data.push_back("Use Application");
-        data.push_back("Dummy Data");
-        data.push_back("Dummy Data");
         currentState = Principal;
         this->secondDisplay(data);
     }
@@ -143,12 +139,13 @@ void window::on_button_clicked() {
         data.push_back("termite");
         data.push_back("xdotool key Super+w");
         data.push_back("ffplay -nodisp /home/joaquin/Downloads/Duki-Rockstar.mp3");
+        data.push_back("bspc node -f prev");
         this->secondDisplay(data);
         currentState = Binder;
     }
     if(currentState == Principal){
         string selected = getSelected();
-        if(selected == "Create Gesture"){
+        if(selected == "Bind Gesture with Command"){
             currentState = Free;
             data.clear();
             data.push_back("Waiting for Gesture");
@@ -169,10 +166,8 @@ void window::on_button_clicked() {
     if(currentState == Begin) {
         cout << "veretera\n";
         data.clear();
-        data.push_back("Create Gesture");
+        data.push_back("Bind Gesture with Command");
         data.push_back("Use Application");
-        data.push_back("Dummy Data");
-        data.push_back("Dummy Data");
         currentState = Principal;
         this->secondDisplay(data);
     }

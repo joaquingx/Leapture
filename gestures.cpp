@@ -39,6 +39,7 @@ OwnGestures::OwnGestures(VisInterface *& interface) {
     bindMap[Free]["Fist"] = bindMap[Free]["Chavo"] = bindMap[Free]["LiftUp"] = bindMap[Free]["Swipe"] = bindMap[Free]["Double-Fist"] =
             bindMap[Free]["ModoDiablo"] = bindMap[Free]["Left-LiftUp"] =
             "xdotool mousemove 1000  1000 click 1";
+    bindMap[sxhkd]["Double-Fist"] = "xdotool mousemove 1000  1000 click 1";
     this->interface = interface;
 }
 
@@ -97,24 +98,27 @@ void OwnGestures::checkGestures(Leap::Frame frame, Leap::Controller controller) 
 //        cout <<"Confidence: "  << frame.hands().leftmost().confidence() << "\n";
         int predef = checkPredefinedGestures(frame, controller);
         if(checkFist(frame)){
-            extra += 400000;
+            extra += 300000;
             anyoneActivated=true;
             manageAccordingState("Fist");
         }
-        else if(checkLiftUp(frame)){
-            anyoneActivated=true;
-            manageAccordingState("LiftUp");
-        }
+//        else if(checkLiftUp(frame)){
+//            extra += 400000;
+//            anyoneActivated=true;
+//            manageAccordingState("LiftUp");
+//        }
         else if(checkDoubleFist(frame)){
+            extra += 400000;
             anyoneActivated=true;
             manageAccordingState("Double-Fist");
         }
-        else if(checkLeftLiftUp(frame)){
-            anyoneActivated=true;
-            manageAccordingState("Left-LiftUp");
-        }
+//        else if(checkLeftLiftUp(frame)){
+//            extra += 200000;
+//            anyoneActivated=true;
+//            manageAccordingState("Left-LiftUp");
+//        }
         else if(checkModoDiablo(frame)){
-            extra += 400000;
+            extra += 200000;
             anyoneActivated=true;
             manageAccordingState("ModoDiablo");
         }
@@ -319,7 +323,7 @@ bool OwnGestures::checkLeftLiftUp(Leap::Frame frame) {
         palmVelocity = leftHand.palmVelocity();
 //    cout << palmNormal.roll() << "\n";
         if ((numberHands == 1) && (palmVelocity.x < 30.0f) && (palmNormal.roll() > -0.8f) &&
-            (palmNormal.roll() < 0.7f) && (palmVelocity.z > 50.0f) && (palmVelocity.z < 500.0f)) {
+            (palmNormal.roll() < 0.7f) && (palmVelocity.z < -80.0f) ) {
             return true;
         }
 //    }

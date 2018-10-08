@@ -1,6 +1,9 @@
-# Leapture                          ![Logo](https://i.imgur.com/CQ2m3Ml.png)
+![Godot Engine logo](https://i.imgur.com/CQ2m3Ml.png)
 
+Leapture binds hand gestures to commands.
 
+### Required Hardware
+ * **Leapmotion**
 ### Required Dependencies
  * GTK+
  * Leap Motion Driver

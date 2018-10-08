@@ -1,4 +1,4 @@
-![Godot Engine logo](https://i.imgur.com/CQ2m3Ml.png)
+# Leapture ![Leapture logo](https://i.imgur.com/MTgY2rE.png)
 
 Leapture binds hand gestures to commands.
 

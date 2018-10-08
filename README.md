@@ -1,4 +1,4 @@
-# LeapMotion Gesture Project
+# Leapture                          ![Logo](https://i.imgur.com/CQ2m3Ml.png)
 
 
 ### Required Dependencies

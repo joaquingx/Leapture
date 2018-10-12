@@ -128,9 +128,19 @@ void window::on_button_clicked() {
     }
 
     if(currentState == Free){
-        cout << "Clickeaste papurri\n" << gesture << "\n";
         data.clear();
-        string pretty = "Se detecto el gesto " + gesture + "    ";
+        cout << "Clickeaste papurri\n" << gesture << "\n";
+        string pretty = "Gesture detected is " + gesture;
+        if(!bindMap[sxhkd].count(gesture)){
+            pretty += "| Not bound yet";
+        }
+        else{
+            pretty += "| Bound with " + bindMap[sxhkd][gesture];
+        }
+
+        if(gesture == "Double-Fist" or gesture == "Chavo"){
+            pretty += " | WARNING: This bound would break Interface workflow!";
+        }
         data.push_back(pretty);
         data.push_back("oneko");
         data.push_back("google-chrome-stable");
@@ -138,7 +148,7 @@ void window::on_button_clicked() {
         data.push_back("bspc desktop -f prev");
         data.push_back("termite");
         data.push_back("xdotool key Super+w");
-        data.push_back("ffplay -nodisp /home/joaquin/Downloads/Duki-Rockstar.mp3");
+        data.push_back("ffplay -nodisp /home/joaquin/Downloads/Duki-Rockstar.mp3 -ss 4 -t 3.41");
         data.push_back("bspc node -f prev");
         this->secondDisplay(data);
         currentState = Binder;

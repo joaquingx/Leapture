@@ -36,10 +36,11 @@ OwnGestures::OwnGestures(VisInterface *& interface) {
     bindMap.resize(STATES);
     bindMap[Begin]["Fist"] = bindMap[Principal]["Fist"]  = bindMap[Binder]["Fist"] = "xdotool mousemove 1000  1000 click 1";
     bindMap[Begin]["Chavo"] = bindMap[Principal]["Chavo"] = bindMap[Binder]["Chavo"] = "~ setNavigation";
-    bindMap[Free]["Fist"] = bindMap[Free]["Chavo"] = bindMap[Free]["LiftUp"] = bindMap[Free]["Swipe"] = bindMap[Free]["Double-Fist"] =
-            bindMap[Free]["ModoDiablo"] = bindMap[Free]["Left-LiftUp"] =
+    bindMap[Free]["Fist"]  = bindMap[Free]["LiftUp"] = bindMap[Free]["Swipe"] =
+    bindMap[Free]["ModoDiablo"] = bindMap[Free]["Left-LiftUp"] = bindMap[Free]["Double-Fist"] = bindMap[Free]["Chavo"] =
             "xdotool mousemove 1000  1000 click 1";
     bindMap[sxhkd]["Double-Fist"] = "xdotool mousemove 1000  1000 click 1";
+    bindMap[sxhkd]["Chavo"] = "bspc node -f prev";
     this->interface = interface;
 }
 

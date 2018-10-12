@@ -14,6 +14,7 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
+//    system("Visualizer; bspc node -t floating");
     VisInterface * itfc = new VisInterface(1,argv);
 
 
